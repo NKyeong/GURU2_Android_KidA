@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android-extensions")  // 추가된 부분
 }
 
 android {
@@ -36,7 +37,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.android.material:material:1.2.0") // 추가된 부분
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
