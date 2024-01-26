@@ -20,7 +20,7 @@ class MyPageEditFragment : AppCompatActivity() {
             // 선택한 챌린지 삭제
 
             // 페이지 이동
-            var intent = Intent(this, activity_my_page::class.java)
+            var intent = Intent(this, MyPageFragment::class.java)
             startActivity(intent)
         }
     }
