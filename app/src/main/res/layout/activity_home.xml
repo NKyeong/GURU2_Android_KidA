@@ -19,12 +19,13 @@
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        app:itemIconTint="#2196F3"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_home_button"
-        app:labelVisibilityMode="labeled"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="#2196F3"/>
+        app:menu="@menu/menu_home_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

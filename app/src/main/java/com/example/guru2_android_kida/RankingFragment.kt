@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.challengeapp.databinding.FragmentRankingBinding
 
-class RankingFragment : Fragment() {
+class RankingFragment : Fragment(R.layout.fragment_ranking){
 
     private lateinit var binding: FragmentRankingBinding
 

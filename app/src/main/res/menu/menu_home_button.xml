@@ -11,6 +11,6 @@
         android:id="@+id/fragment_ranking"
         android:title="랭킹" />
     <item
-        android:id="@+id/fragment_mypage"
+        android:id="@+id/fragment_my_page"
         android:title="마이페이지" />
 </menu>

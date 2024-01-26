@@ -28,7 +28,7 @@ class HomeActivity: AppCompatActivity() {
                 R.id.fragment_home -> setCurrentFragment(homeFragment)
                 R.id.fragment_challenge -> setCurrentFragment(challengeFragment)
                 R.id.fragment_ranking -> setCurrentFragment(rankingFragment)
-                R.id.fragment_mypage -> setCurrentFragment(myPageFragment)
+                R.id.fragment_my_page -> setCurrentFragment(myPageFragment)
             }
             true
         }

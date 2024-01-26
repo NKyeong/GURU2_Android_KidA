@@ -3,9 +3,10 @@ package com.example.guru2_android_kida
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 
-class ChallengeFragment : AppCompatActivity() {
+class ChallengeFragment : Fragment(R.layout.fragment_challenge) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

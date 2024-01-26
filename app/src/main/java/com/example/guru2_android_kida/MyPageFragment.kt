@@ -12,7 +12,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 // 마이페이지 액티비티 입니다.
-class MyPageFragment : AppCompatActivity() {
+class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
     lateinit var btnEdit: Button
 
