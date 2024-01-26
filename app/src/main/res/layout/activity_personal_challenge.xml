@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".PersonalChallengeActivity">
+
+    <EditText
+        android:id="@+id/editTextChallenge1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="도전과제 1"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/editTextChallenge2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextChallenge1"
+        android:layout_marginTop="8dp"
+        android:hint="도전과제 2"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/editTextChallenge3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextChallenge2"
+        android:layout_marginTop="8dp"
+        android:hint="도전과제 3"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/buttonSaveChallenge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextChallenge3"
+        android:layout_marginTop="16dp"
+        android:text="챌린지 참여하기"/>
+
+    <GridView
+        android:id="@+id/gridViewStamps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSaveChallenge"
+        android:layout_marginTop="16dp"
+        android:columnWidth="80dp"
+        android:gravity="center"
+        android:numColumns="5"
+        android:stretchMode="columnWidth"/>
+</RelativeLayout>
