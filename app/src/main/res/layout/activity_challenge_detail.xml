@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ChallengeDetailActivity">
+
+    <TextView
+        android:id="@+id/textViewChallengeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="챌린지 이름"
+        android:textSize="20sp"/>
+
+    <ListView
+        android:id="@+id/listViewChallenges"
+        android:layout_width="395dp"
+        android:layout_height="210dp"
+        android:layout_below="@id/textViewChallengeName"
+        android:layout_marginTop="8dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="16dp" />
+
+    <GridView
+        android:id="@+id/gridViewStamps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listViewChallenges"
+        android:layout_marginTop="16dp"
+        android:columnWidth="80dp"
+        android:gravity="center"
+        android:numColumns="5"
+        android:stretchMode="columnWidth"/>
+</RelativeLayout>
