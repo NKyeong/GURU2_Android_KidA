@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Your image view for the slider -->
+    <ImageView
+        android:id="@+id/popularViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+
+    <!-- Your image view for the slider -->
+    <ImageView
+        android:id="@+id/myChallengeViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+
+    <!-- Indicator Dot ImageView -->
+    <ImageView
+        android:id="@+id/popularIndicatorDot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/indicator_dot_unselected"/>
+
+    <ImageView
+        android:id="@+id/myChallengeIndicatorDot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/indicator_dot_unselected"/>
+
+</LinearLayout>

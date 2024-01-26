@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-android-extensions")  // 추가된 부분
+    id("kotlin-android")
+    id("kotlin-android-extensions") // 추가된 부분
 }
 
 android {
