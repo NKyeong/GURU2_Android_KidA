@@ -13,6 +13,18 @@
         android:theme="@style/Theme.GURU2_Android_KidA"
         tools:targetApi="31">
         <activity
+            android:name=".MyPageFragment"
+            android:exported="false" />
+        <activity
+            android:name=".MyPageEditFragment"
+            android:exported="false" />
+        <activity
+            android:name=".activity_my_page_edit"
+            android:exported="false" />
+        <activity
+            android:name=".activity_my_page"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
