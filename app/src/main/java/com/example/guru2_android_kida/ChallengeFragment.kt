@@ -5,11 +5,11 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 
-class MainActivity : AppCompatActivity() {
+class ChallengeFragment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_challenge)
 
         //populatViewPage 이미지 슬라이드
         val popularViewPager: ViewPager2 = findViewById(R.id.popularViewPager)
