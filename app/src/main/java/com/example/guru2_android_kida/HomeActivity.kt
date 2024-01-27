@@ -27,6 +27,7 @@ class HomeActivity: AppCompatActivity() {
         if (savedInstanceState == null) {
             binding.bottomNavigationView.selectedItemId = R.id.fragment_home
         }
+
     }
 
     // 메뉴의 아이디(fragment_home)를 선택했을 때 프래그먼트가 변경되는 코드 입니다.

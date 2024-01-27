@@ -6,6 +6,7 @@ import android.widget.GridView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.guru2_android_kida.R
 
 class ChallengeDetailActivity : AppCompatActivity() {
 
