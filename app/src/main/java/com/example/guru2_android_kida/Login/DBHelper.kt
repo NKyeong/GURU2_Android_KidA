@@ -16,11 +16,11 @@ class DBHelper(context: Context) :
         MyDB!!.execSQL("DROP TABLE IF EXISTS user")
     }
     // username과 password 정보를 받아 DB에 삽입, 삽입이 성공하면 true, 실패하면 false를 리턴
-    fun insertData(username: String?, password: String?): Boolean {
+    fun insertData(user: String?, pass: String?): Boolean {
         val MyDB = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("username", username)
-        contentValues.put("password", password)
+        contentValues.put("username", user)
+        contentValues.put("password", pass)
         val result = MyDB.insert("users", null, contentValues)
         return if (result == -1L) false else true
     }

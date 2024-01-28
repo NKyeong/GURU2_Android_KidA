@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.guru2_android_kida.Login.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,7 @@ class IntroActivity : AppCompatActivity() {
         // 매니페스트 파일에서 가장 먼저 실행되는 파일을 바꾸어야 합니다.
         val handler = Handler()
         handler.postDelayed({
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)
