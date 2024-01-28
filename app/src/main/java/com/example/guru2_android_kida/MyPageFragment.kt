@@ -14,25 +14,32 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Login.DBHelper
-//import kotlinx.android.synthetic.main.fragment_home.recyclerView
+import kotlinx.android.synthetic.main.fragment_home.recyclerView
 
 // 마이페이지 액티비티 입니다.
 class MyPageFragment : Fragment(R.layout.fragment_my_page) {
+    privatte val binding: FragmentMyPageBinding by lazy {
+        FragmentMyPageBinding.inflate(layoutInflater)
+    }
+
     private lateinit var dbHelper: DBHelper
     private lateinit var userName: TextView
+    private lateinit var btnEdit: Button
 
-    lateinit var btnEdit: Button
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_my_page)
+        binding
+        val view = binding.root
 
-        btnEdit = findViewById(R.id.btnEdit)
+        binding.bottomNavigationView.btnEdit = R.id.btnEdit
+        userName = binding.userName
+        btnEdit = binding.btnEdit
 
         // MyDB에서 특정 username 불러오기
-        dbHelper = DBHelper(this)
-
-        userName = findViewById(R.id.userName)
+        dbHelper = DBHelper(requireContext())
 
         // 특정 username을 지정하여 사용자 정보를 가져옴
         val username = 1L // 예시로 username를 1로 설정
@@ -41,7 +48,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         if (user != null) {
             // 사용자 정보를 사용하여 원하는 작업 수행
             // 예시로 로그 출력
-            userName.text = MyDB.username}
+            userName.text = user.username}
 
 
         // 레벨 불러오기
@@ -52,10 +59,9 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         // 챌린지 정보를 담을 모델 클래스 만들기
         // 연결된 dbHelper는 login에 대한 DB라서 challenge에 관한 databaseHelper를 만들어야함
         // 추가로 어댑터도 만들어야함
-        val challengeView: RecyclerView = findViewById(R.id.challengeView)
-        challengeView.layoutManager = LinearLayoutManager(this)
+        val challengeView: RecyclerView = binding.challengeView
+        challengeView.layoutManager = LinearLayoutManager(requireContext())
 
-        dbHelper = DBHelper(this)
         val challengeList = dbHelper.getChallenges()
 
         val adapter = ChallengeAdapter(challengeList)
@@ -68,7 +74,8 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
             startActivity(intent)
         }
 
-    }*/
+        return view
+    }
 
 
     // 다른 페이지들과 연결
