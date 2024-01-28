@@ -6,22 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".RankingFragment">
 
-
-    <ListView
-        android:id="@+id/listViewRanking"
+    <!-- "Ranking"이라는 단어가 있는 상단 타이틀 바 -->
+    <TextView
+        android:id="@+id/tvRankingTitle"
         android:layout_width="match_parent"
-        android:layout_height="575dp"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:padding="16dp" />
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Ranking"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
-    <FrameLayout
-        android:id="@+id/mainFrameLayout"
+    <!--월 표시 -->
+    <TextView
+        android:id="@+id/tvCurrentMonth"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRankingTitle"
+        android:padding="8dp"
+        android:text="#월의 랭킹"
+        android:textAlignment="viewStart"
+        android:textSize="18sp" />
+
+    <!-- 랭킹을 위한 ListView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRanking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvCurrentMonth"
+        android:padding="8dp" />
+
+    <!-- 하단 메뉴 바 자리 -->
+    <LinearLayout
+        android:id="@+id/layoutBottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"/>
-
+        android:orientation="horizontal"
+        android:gravity="center">
+        <!-- 여기에 메뉴 항목 추가 -->
+    </LinearLayout>
 
 </RelativeLayout>
