@@ -1,0 +1,3 @@
+package com.example.guru2_android_kida
+
+data class UserRanking(val userName: String, val stampsCount: Int)
