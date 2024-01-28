@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Login.DBHelper
-import kotlinx.android.synthetic.main.fragment_home.recyclerView
+import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
+//import kotlinx.android.synthetic.main.fragment_home.recyclerView
 
 // 마이페이지 액티비티 입니다.
 class MyPageFragment : Fragment(R.layout.fragment_my_page) {
-    privatte val binding: FragmentMyPageBinding by lazy {
+    private val binding: FragmentMyPageBinding by lazy {
         FragmentMyPageBinding.inflate(layoutInflater)
     }
 
@@ -26,7 +27,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     private lateinit var userName: TextView
     private lateinit var btnEdit: Button
 
-    override fun onCreateView(
+    /*override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -75,7 +76,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         }
 
         return view
-    }
+    }*/
 
 
     // 다른 페이지들과 연결
