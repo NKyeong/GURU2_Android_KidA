@@ -4,35 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import com.example.challengeapp.databinding.FragmentRankingBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import com.example.guru2_android_kida.databinding.FragmentRankingBinding
+import java.util.Calendar
+import java.util.Locale
 
-class RankingFragment : Fragment(R.layout.fragment_ranking){
+class RankingFragment : Fragment() {
 
-    private lateinit var binding: FragmentRankingBinding
+    // FragmentRankingBinding을 사용하여 뷰 바인딩 초기화
+    private val binding: FragmentRankingBinding by lazy {
+        FragmentRankingBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentRankingBinding.inflate(inflater, container, false)
+    ): View {
+        updateCurrentMonth()
+        setupRankingList()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    // 전 월을 업데이트하는 함수
+    private fun updateCurrentMonth() {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -1)
+        val lastMonth = SimpleDateFormat("MMMM", Locale.getDefault()).format(calendar.time)
+        binding.tvCurrentMonth.text = "#${lastMonth}의 랭킹"
+    }
 
-        // 가상의 랭킹 데이터 생성
-        val rankingData = listOf(
-            "User 1",
-            "User 2",
-            "User 3",
-            "User 4",
-            "User 5"
-        )
-
-        // 어댑터를 통해 데이터를 리스트뷰에 연결
-        val adapter = RankingAdapter(requireContext(), rankingData)
-        binding.listViewRanking.adapter = adapter
+    // 랭킹 리스트를 설정하는 함수
+    private fun setupRankingList() {
+        val rankingData = List(50) { UserRanking("User ${it + 1}", Random().nextInt(100)) }
+        val adapter = UserRankingAdapter(rankingData)
+        binding.recyclerViewRanking.adapter = adapter
     }
 }
