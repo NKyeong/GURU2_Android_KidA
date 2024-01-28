@@ -7,8 +7,15 @@
     android:layout_height="match_parent">
 
     <!-- 메뉴바에서 마이페이지를 클릭했을 때 실행되는 파일 입니다. !-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/challengeView"
+        android:layout_width="409dp"
+        android:layout_height="385dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="209dp" />
+
     <TextView
-        android:id="@+id/nickname"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -32,7 +39,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/nickname"
+        app:layout_constraintStart_toEndOf="@+id/userName"
         tools:layout_editor_absoluteY="53dp"
         tools:ignore="MissingConstraints" />
 
@@ -44,19 +51,5 @@
         tools:layout_editor_absoluteX="284dp"
         tools:layout_editor_absoluteY="160dp"
         tools:ignore="MissingConstraints" />
-
-    <ScrollView
-        android:id="@+id/chellenge_view"
-        android:layout_width="409dp"
-        android:layout_height="385dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="209dp"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
