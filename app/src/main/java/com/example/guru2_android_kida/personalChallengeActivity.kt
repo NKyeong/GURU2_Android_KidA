@@ -1,45 +1,125 @@
 package com.example.challengeapp
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
-import android.widget.GridView
+import android.widget.GridLayout
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.guru2_android_kida.R
+import android.content.ContentValues
+import android.content.Intent
+import com.example.guru2_android_kida.pChallengeDbHelper
 
 class PersonalChallengeActivity : AppCompatActivity() {
-
-    private lateinit var editTextChallenge1: EditText
-    private lateinit var editTextChallenge2: EditText
-    private lateinit var editTextChallenge3: EditText
-    private lateinit var buttonSaveChallenge: Button
-    private lateinit var gridViewStamps: GridView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_challenge)
 
-        editTextChallenge1 = findViewById(R.id.editTextChallenge1)
-        editTextChallenge2 = findViewById(R.id.editTextChallenge2)
-        editTextChallenge3 = findViewById(R.id.editTextChallenge3)
-        buttonSaveChallenge = findViewById(R.id.buttonSaveChallenge)
-        gridViewStamps = findViewById(R.id.gridViewStamps)
+        // 뷰 바인딩
+        val btnBack = findViewById<Button>(R.id.btnBack)
+        val btnJoinChallenge = findViewById<Button>(R.id.btnJoinChallenge)
+        val etChallenge1 = findViewById<EditText>(R.id.etChallenge1)
+        val etChallenge2 = findViewById<EditText>(R.id.etChallenge2)
+        val etChallenge3 = findViewById<EditText>(R.id.etChallenge3)
+        val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
 
-        // 빈 도장판 30개 데이터 생성 (이미지 등의 데이터는 실제로 사용할 데이터로 변경 필요)
-        val stamps = Array(30) { "도장 $it" }
+        // '뒤로 가기' 버튼 이벤트 처리
+        btnBack.setOnClickListener {
+            finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
+        }
 
-        // GridView에 어댑터 연결
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, stamps)
-        gridViewStamps.adapter = adapter
+        // 도전과제 입력 필드에 대한 리스너 설정
+        setupChallengeInputListeners(etChallenge1, etChallenge2, etChallenge3, btnJoinChallenge)
 
-        // '챌린지 참여하기' 버튼 클릭 시 저장 기능 추가
-        buttonSaveChallenge.setOnClickListener {
-            saveChallenge()
+        // 도장판 초기화
+        initializeStampGrid(gridLayoutStamps)
+
+        //홈화면으로 이동
+        fun navigateToHomeScreen() {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        // '챌린지 참여하기' 버튼 이벤트 처리
+        btnJoinChallenge.setOnClickListener {
+            // 입력된 도전과제 데이터 저장
+            saveChallengeData(
+                etChallenge1.text.toString(),
+                etChallenge2.text.toString(),
+                etChallenge3.text.toString(),
+                0 // 도장 수는 예시로 0을 사용합니다.
+            )
+            navigateToHomeScreen()
         }
     }
 
-    private fun saveChallenge() {
-        // TODO: 도전과제 및 도장판 데이터를 저장하는 로직 추가
-        // editTextChallenge1.text.toString(), editTextChallenge2.text.toString(), editTextChallenge3.text.toString() 등 활용
+    // 도전과제 입력 필드 리스너 설정 함수
+    private fun setupChallengeInputListeners(
+        et1: EditText,
+        et2: EditText,
+        et3: EditText,
+        joinButton: Button
+    ) {
+        val textWatcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // 모든 도전과제 필드가 채워져 있을 때만 '챌린지 참여하기' 버튼을 활성화
+                joinButton.isEnabled =
+                    et1.text.isNotEmpty() && et2.text.isNotEmpty() && et3.text.isNotEmpty()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        }
+
+        // 각 입력 필드에 리스너 추가
+        et1.addTextChangedListener(textWatcher)
+        et2.addTextChangedListener(textWatcher)
+        et3.addTextChangedListener(textWatcher)
+    }
+
+    // 도장판 초기화 함수
+    private fun initializeStampGrid(gridLayout: GridLayout) {
+        for (i in 1..30) {
+            val stamp = ImageView(this)
+            // 도장 이미지 설정
+            stamp.setImageResource(R.drawable.baseline_radio_button_unchecked_24)
+            gridLayout.addView(stamp)
+
+            // 도장 이미지의 레이아웃 파라미터 설정
+            val params = stamp.layoutParams as GridLayout.LayoutParams
+            params.width = 0
+            params.height = 0
+            params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+            params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+            stamp.layoutParams = params
+        }
+    }
+
+    // 도전과제 데이터 저장 함수
+    private fun saveChallengeData(
+        challenge1: String,
+        challenge2: String,
+        challenge3: String,
+        stampsCollected: Int
+    ) {
+        val dbHelper = pChallengeDbHelper(this)
+        // 데이터베이스에 쓸 수 있도록 설정
+        val db = dbHelper.writableDatabase
+
+        // 새 데이터를 위한 ContentValues 객체 생성
+        val values = ContentValues().apply {
+            put("challenge1", challenge1)
+            put("challenge2", challenge2)
+            put("challenge3", challenge3)
+            put("stampsCollected", stampsCollected)
+        }
+
+        // 데이터베이스에 데이터 삽입
+        db.insert("challenges", null, values)
+
     }
 }
