@@ -13,7 +13,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_home.recyclerView
+import com.example.guru2_android_kida.Login.DBHelper
+//import kotlinx.android.synthetic.main.fragment_home.recyclerView
 
 // 마이페이지 액티비티 입니다.
 class MyPageFragment : Fragment(R.layout.fragment_my_page) {
@@ -22,7 +23,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
     lateinit var btnEdit: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_my_page)
 
@@ -63,11 +64,11 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
         btnEdit.setOnClickListener {
-            var intent = Intent(this, MyPageEditFragment::class.java)
+            var intent = Intent(requireContext(), MyPageEditFragment::class.java)
             startActivity(intent)
         }
 
-    }
+    }*/
 
 
     // 다른 페이지들과 연결

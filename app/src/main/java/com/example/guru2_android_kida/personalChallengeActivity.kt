@@ -1,4 +1,4 @@
-package com.example.challengeapp
+package com.example.guru2_android_kida
 
 import android.os.Bundle
 import android.text.Editable
@@ -11,9 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.guru2_android_kida.R
 import android.content.ContentValues
 import android.content.Intent
+import com.example.guru2_android_kida.HomeActivity
 import com.example.guru2_android_kida.pChallengeDbHelper
 
-class PersonalChallengeActivity : AppCompatActivity() {
+class personalChallengeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,7 +87,7 @@ class PersonalChallengeActivity : AppCompatActivity() {
         for (i in 1..30) {
             val stamp = ImageView(this)
             // 도장 이미지 설정
-            stamp.setImageResource(R.drawable.baseline_radio_button_unchecked_24)
+            stamp.setImageResource(R.drawable.indicator_dot_unselected)
             gridLayout.addView(stamp)
 
             // 도장 이미지의 레이아웃 파라미터 설정

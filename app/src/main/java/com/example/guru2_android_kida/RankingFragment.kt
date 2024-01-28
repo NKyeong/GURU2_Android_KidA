@@ -38,7 +38,7 @@ class RankingFragment : Fragment() {
 
     // 랭킹 리스트를 설정하는 함수
     private fun setupRankingList() {
-        val rankingData = List(50) { UserRanking("User ${it + 1}", Random().nextInt(100)) }
+        val rankingData = List(50) { userRanking("User ${it + 1}", Random().nextInt(100)) }
         val adapter = UserRankingAdapter(rankingData)
         binding.recyclerViewRanking.adapter = adapter
     }

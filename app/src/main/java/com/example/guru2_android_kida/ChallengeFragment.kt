@@ -41,7 +41,8 @@ class ChallengeFragment : Fragment() {
 
         // Find indicatorLayout
         val popularIndicatorLayout: LinearLayout = view.findViewById(R.id.popularIndicatorLayout)
-        val recommendationIndicatorLayout: LinearLayout = view.findViewById(R.id.recommendationIndicatorLayout)
+        val recommendationIndicatorLayout: LinearLayout =
+            view.findViewById(R.id.recommendationIndicatorLayout)
 
         // Set up Indicator
         val indicator1 = Indicator(5, requireContext()) // Assuming there are 5 images
@@ -59,7 +60,8 @@ class ChallengeFragment : Fragment() {
         })
 
         // ViewPager Page Change Listener for recommendationIndicator
-        myChallengeViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        myChallengeViewPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 indicator2.selectDot(position)
@@ -70,9 +72,10 @@ class ChallengeFragment : Fragment() {
         val thirdMenuLayout: LinearLayout = view.findViewById(R.id.popularIndicatorLayout)
         thirdMenuLayout.setOnClickListener {
             // 챌린지 상세 화면으로 이동하는 인텐트 생성
-            val intent = Intent(this, ChallengeExplanationActivity::class.java)
+            val intent = Intent(requireContext(), ChallengeExplanationActivity::class.java)
             // 필요한 경우 챌린지에 대한 정보를 인텐트에 추가할 수 있습니다.
             // intent.putExtra("challengeId", challengeId) 등
             startActivity(intent)
+        }
     }
 }

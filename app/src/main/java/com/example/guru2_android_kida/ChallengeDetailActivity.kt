@@ -43,7 +43,7 @@ class ChallengeDetailActivity : AppCompatActivity() {
         for (i in 1..30) {
             val stamp = ImageView(this)
             // 도장 이미지 설정
-            stamp.setImageResource(R.drawable.baseline_radio_button_unchecked_24)
+            stamp.setImageResource(R.drawable.indicator_dot_unselected) // 임시로 수정하였습니다.
             gridLayout.addView(stamp)
 
             // 도장 이미지의 레이아웃 파라미터 설정

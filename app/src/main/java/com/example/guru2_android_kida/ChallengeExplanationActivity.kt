@@ -14,7 +14,7 @@ class ChallengeExplanationActivity : AppCompatActivity() {
         val btnStartChallenge: Button = findViewById(R.id.btn_start_challenge)
         btnStartChallenge.setOnClickListener {
             // 'challenge_startoption.xml'로 이동하는 인텐트 생성
-            val intent = Intent(this, ChallengeDetailActivity::class.java)
+            val intent = Intent(this, personalChallengeActivity::class.java)
             startActivity(intent)
         }
     }
