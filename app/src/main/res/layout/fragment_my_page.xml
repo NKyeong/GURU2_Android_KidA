@@ -12,7 +12,8 @@
         android:layout_width="409dp"
         android:layout_height="385dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="209dp" />
+        tools:layout_editor_absoluteY="209dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/userName"
