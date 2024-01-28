@@ -1,4 +1,4 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.guru2_android_kida.R
 
 class RegisterActivity: AppCompatActivity() {
     lateinit var editRegistName: EditText

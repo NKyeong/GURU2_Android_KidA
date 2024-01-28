@@ -1,4 +1,4 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Login
 
 import android.content.ContentValues
 import android.content.Context
