@@ -1,52 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".PersonalChallengeActivity">
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextChallenge1"
+    <!-- 되돌아가기 버튼과 "도전과제 설정" 텍스트 -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="도전과제 1"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
 
-    <EditText
-        android:id="@+id/editTextChallenge2"
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="도전과제 설정"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+    </LinearLayout>
+
+    <!-- 도전과제 입력 칸 -->
+    <LinearLayout
+        android:id="@+id/layoutChallenges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextChallenge1"
-        android:layout_marginTop="8dp"
-        android:hint="도전과제 2"
-        android:inputType="text"/>
+        android:layout_below="@id/layoutHeader"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
-    <EditText
-        android:id="@+id/editTextChallenge3"
+        <EditText
+            android:id="@+id/etChallenge1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="도전과제 1" />
+
+        <EditText
+            android:id="@+id/etChallenge2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="도전과제 2" />
+
+        <EditText
+            android:id="@+id/etChallenge3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="도전과제 3" />
+    </LinearLayout>
+
+    <!-- "열심히 채워볼까요?" 텍스트와 빈 도장판 -->
+    <TextView
+        android:id="@+id/tvStampMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutChallenges"
+        android:text="열심히 채워볼까요?"
+        android:layout_marginTop="16dp" />
+
+    <!-- 임시 도장판 표시 -->
+    <GridLayout
+        android:id="@+id/gridLayoutStamps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextChallenge2"
-        android:layout_marginTop="8dp"
-        android:hint="도전과제 3"
-        android:inputType="text"/>
+        android:layout_below="@id/tvStampMessage"
+        android:columnCount="6"
+        android:rowCount="5"
+        android:layout_marginTop="8dp">
 
+    </GridLayout>
+
+    <!-- "챌린지 참여하기" 버튼 -->
     <Button
-        android:id="@+id/buttonSaveChallenge"
-        android:layout_width="match_parent"
+        android:id="@+id/btnJoinChallenge"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextChallenge3"
-        android:layout_marginTop="16dp"
-        android:text="챌린지 참여하기"/>
-
-    <GridView
-        android:id="@+id/gridViewStamps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonSaveChallenge"
-        android:layout_marginTop="16dp"
-        android:columnWidth="80dp"
-        android:gravity="center"
-        android:numColumns="5"
-        android:stretchMode="columnWidth"/>
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/gridLayoutStamps"
+        android:text="챌린지 참여하기"
+        android:layout_marginTop="16dp" />
 </RelativeLayout>
