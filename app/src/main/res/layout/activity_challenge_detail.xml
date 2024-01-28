@@ -1,36 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ChallengeDetailActivity">
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textViewChallengeName"
+    <!-- 되돌아가기 버튼과 "나의 도전과제" 텍스트 -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="챌린지 이름"
-        android:textSize="20sp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
 
-    <ListView
-        android:id="@+id/listViewChallenges"
-        android:layout_width="395dp"
-        android:layout_height="210dp"
-        android:layout_below="@id/textViewChallengeName"
-        android:layout_marginTop="8dp"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:padding="16dp" />
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
 
-    <GridView
-        android:id="@+id/gridViewStamps"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="나의 도전과제"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+    </LinearLayout>
+
+    <!-- 사용자가 설정한 도전과제를 표시할 공간 -->
+    <LinearLayout
+        android:id="@+id/layoutChallenges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/listViewChallenges"
+        android:layout_below="@id/layoutHeader"
+        android:orientation="vertical"
         android:layout_marginTop="16dp"
-        android:columnWidth="80dp"
-        android:gravity="center"
-        android:numColumns="5"
-        android:stretchMode="columnWidth"/>
+        android:layout_marginBottom="16dp">
+
+        <!-- 사용자가 설정한 도전과제 1 -->
+        <TextView
+            android:id="@+id/tvChallenge1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도전과제 1"
+            android:textAppearance="?attr/textAppearanceBody1" />
+
+        <!-- 사용자가 설정한 도전과제 2 -->
+        <TextView
+            android:id="@+id/tvChallenge2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도전과제 2"
+            android:textAppearance="?attr/textAppearanceBody1" />
+
+        <!-- 사용자가 설정한 도전과제 3 -->
+        <TextView
+            android:id="@+id/tvChallenge3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="도전과제 3"
+            android:textAppearance="?attr/textAppearanceBody1" />
+    </LinearLayout>
+
+    <!-- 현재 진행 중인 도장판 표시 -->
+    <TextView
+        android:id="@+id/tvStampMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutChallenges"
+        android:text="현재 진행 중인 도장판"
+        android:layout_marginTop="16dp" />
+
+    <!-- 현재 진행 중인 도장판 표시 공간 -->
+    <GridLayout
+        android:id="@+id/gridLayoutStamps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvStampMessage"
+        android:columnCount="6"
+        android:rowCount="5"
+        android:layout_marginTop="8dp">
+
+        <!-- 도장 이미지는 프로그래밍적으로 추가해야 함 -->
+    </GridLayout>
+
 </RelativeLayout>
