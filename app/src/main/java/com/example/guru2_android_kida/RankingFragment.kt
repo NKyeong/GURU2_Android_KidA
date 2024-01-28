@@ -38,8 +38,11 @@ class RankingFragment : Fragment() {
 
     // 랭킹 리스트를 설정하는 함수
     private fun setupRankingList() {
-        val rankingData = List(50) { userRanking("User ${it + 1}", Random().nextInt(100)) }
-        val adapter = UserRankingAdapter(rankingData)
+        // 랜덤 사용자 데이터 생성
+        val rankingData = List(50) { UserRanking("User ${it + 1}", Random().nextInt(100)) }
+        // 도장 개수에 따라 내림차순으로 정렬
+        val sortedRankingData = rankingData.sortedByDescending { it.stampsCount }
+        val adapter = UserRankingAdapter(sortedRankingData)
         binding.recyclerViewRanking.adapter = adapter
     }
 }
