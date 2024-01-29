@@ -76,24 +76,19 @@
                 android:layout_gravity="right"
                 android:text="추가" />
         </LinearLayout>
-            <LinearLayout
-                android:id="@+id/todoContainer"
+        <LinearLayout
+            android:id="@+id/todoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-
-
-
-
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

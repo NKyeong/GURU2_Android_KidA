@@ -24,7 +24,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     private lateinit var userName: TextView
     private lateinit var btnEdit: Button
 
-    override fun onCreateView(
+    /*override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -73,7 +73,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         }
 
         return view
-    }
+    }*/
 
 
     // 다른 페이지들과 연결

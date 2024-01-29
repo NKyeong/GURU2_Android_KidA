@@ -30,6 +30,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     // 초기에는 빈 리스트로 초기화
     private val todoList = mutableListOf<ToDoItem>()
 
+    // todoListCache 추가
+    private val todoListCache = mutableMapOf<String, List<ToDoItem>>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +63,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         calendarView.setOnDateChangeListener { View, year, month, dayOfMonth ->
             val selectedDate = getFormattedDate(year, month, dayOfMonth)
             showTodoList(selectedDate)
+
+            // todoListCache에서 해당 날짜의 할 일 목록 가져오기
+            val cachedTodoList = todoListCache[selectedDate]
+
+            if (cachedTodoList != null) {
+                // 캐시된 데이터가 있으면 그대로 화면 갱신
+                updateUI(cachedTodoList)
+            } else {
+                // 캐시된 데이터가 없으면 데이터베이스에서 가져와서 화면 갱신
+                showTodoList(selectedDate)
+            }
         }
 
         // 추가 버튼을 클릭 시
@@ -81,15 +95,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // Adapter에 아이템 추가
         toDoAdapter.addItem(newTodoItem)
 
-        // RecyclerView에 아이템 추가
-        //todoList.add(newTodoItem)
-        //recyclerView.adapter?.notifyItemInserted(todoList.size - 1)
-
         // 데이터베이스에도 추가
-        dbHelper.insertTodoItem(
-            getCurrentFormattedDate(),
-            newTodoItem
-        )
+        dbHelper.insertTodoItem(getCurrentFormattedDate(), newTodoItem)
+
+        // 해당 날짜의 할 일 목록 캐시 갱신
+        val currentDate = getCurrentFormattedDate()
+        val updatedTodoList = dbHelper.getTodosForDate(currentDate)
+        todoListCache[currentDate] = updatedTodoList
 
     }
 
@@ -106,21 +118,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     // 선택한 날짜에 해당하는 할 일 목록을 가져와서 RecyclerView에 표시
     private fun showTodoList(selectedDate: String) {
+
         // 데이터베이스에서 해당 날짜의 할 일 목록을 가져오기
         val todoListFromDB = dbHelper.getTodosForDate(selectedDate)
 
+        // todoListCache에 캐시 데이터 저장
+        todoListCache[selectedDate] = todoListFromDB
+
         // 어댑터의 내부 리스트를 업데이트하고 RecyclerView 갱신
-        toDoAdapter.updateList(todoListFromDB)
-
-        /*toDoAdapter = ToDoAdapter(todoListFromDB)
-        // RecyclerView 갱신
-        todoList.clear()
-        todoList.addAll(todoListFromDB)
-        recyclerView.adapter?.notifyDataSetChanged()*/
-
+        toDoAdapter.setToDoList(todoListFromDB)
 
 
     }
+    // 기존에 사용하던 updateUI 함수
+    private fun updateUI(newList: List<ToDoItem>) {
+        toDoAdapter.updateList(newList)
+    }
+
     // 날짜를 "yyyy-MM-dd" 형식으로 포맷하는 유틸리티 함수
     private fun getFormattedDate(year: Int, month: Int, dayOfMonth: Int): String {
         val calendar = Calendar.getInstance()

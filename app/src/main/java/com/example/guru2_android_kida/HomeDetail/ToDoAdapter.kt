@@ -11,7 +11,7 @@ import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.HomeToDoListBinding
 
 // 여기서 todoList는 dataset
-class ToDoAdapter(private val todoList: MutableList<ToDoItem>) : RecyclerView.Adapter<ToDoAdapter.ToDoItemViewHolder>() {
+class ToDoAdapter(private val todoList: MutableList<ToDoItem>, ) : RecyclerView.Adapter<ToDoAdapter.ToDoItemViewHolder>() {
 
 
 
@@ -30,6 +30,7 @@ class ToDoAdapter(private val todoList: MutableList<ToDoItem>) : RecyclerView.Ad
         holder.editText.setText(todoItem.todoText)
         holder.editText.isEnabled = !todoItem.isChecked
 
+
         // 체크박스 상태 변경 이벤트 처리
         holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
             todoItem.isChecked = isChecked
@@ -43,6 +44,9 @@ class ToDoAdapter(private val todoList: MutableList<ToDoItem>) : RecyclerView.Ad
                 todoItem.todoText = holder.editText.text.toString()
             }
         }
+
+        // 에디트텍스트에 이전에 입력한 내용 설정
+        holder.editText.setText(todoItem.todoText)
     }
 
     override fun getItemCount(): Int {
@@ -58,9 +62,22 @@ class ToDoAdapter(private val todoList: MutableList<ToDoItem>) : RecyclerView.Ad
     fun addItem(item: ToDoItem) {
         todoList.add(item)
         notifyItemInserted(todoList.size - 1)
+
     }
 
     fun updateList(newList: List<ToDoItem>) {
+        todoList.clear()
+        todoList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    // 현재 todoList 반환하는 메서드 추가
+    fun getToDoList(): List<ToDoItem> {
+        return todoList.toList()
+    }
+
+    // 전체 목록을 갱신하는 메서드 추가
+    fun setToDoList(newList: List<ToDoItem>) {
         todoList.clear()
         todoList.addAll(newList)
         notifyDataSetChanged()
