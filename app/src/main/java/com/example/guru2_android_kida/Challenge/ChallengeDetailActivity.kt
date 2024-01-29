@@ -1,4 +1,4 @@
-package com.example.challengeapp
+package com.example.guru2_android_kida.Challenge
 
 import android.os.Bundle
 import android.widget.Button

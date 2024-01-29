@@ -1,4 +1,4 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Challenge
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.fragment.app.Fragment
+import com.example.guru2_android_kida.ImageSliderAdapter
+import com.example.guru2_android_kida.Indicator
+import com.example.guru2_android_kida.R
 
 class ChallengeFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Challenge
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

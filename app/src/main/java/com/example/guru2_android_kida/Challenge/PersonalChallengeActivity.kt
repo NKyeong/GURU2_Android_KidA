@@ -1,4 +1,4 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Challenge
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,11 +8,10 @@ import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.guru2_android_kida.R
 import android.content.ContentValues
 import android.content.Intent
 import com.example.guru2_android_kida.HomeActivity
-import com.example.guru2_android_kida.pChallengeDbHelper
+import com.example.guru2_android_kida.R
 
 class personalChallengeActivity : AppCompatActivity() {
 

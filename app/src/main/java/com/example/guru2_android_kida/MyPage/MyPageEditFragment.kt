@@ -1,11 +1,11 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.MyPage
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.guru2_android_kida.Login.DBHelper
+import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.FragmentMyPageEditBinding
 
 class MyPageEditFragment : AppCompatActivity() {
@@ -40,7 +40,7 @@ class MyPageEditFragment : AppCompatActivity() {
     // 선택한 챌린지를 삭제하는 함수
     private fun deleteSelectedChallenge(challengeId: Long) {
         // 이 부분에 선택한 챌린지를 삭제하는 코드를 추가
-        dbHelper.deleteChallenge(challengeId)
+        //dbHelper.deleteChallenge(challengeId)
 
         // DBHelper에 추가
         // DBHelper 클래스에서 챌린지를 삭제하는 함수

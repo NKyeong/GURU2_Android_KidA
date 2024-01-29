@@ -1,13 +1,11 @@
 package com.example.guru2_android_kida
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
+import com.example.guru2_android_kida.Challenge.ChallengeFragment
+import com.example.guru2_android_kida.MyPage.MyPageFragment
+import com.example.guru2_android_kida.Ranking.RankingFragment
 import com.example.guru2_android_kida.databinding.ActivityHomeBinding
-import com.example.guru2_android_kida.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity: AppCompatActivity() {
 

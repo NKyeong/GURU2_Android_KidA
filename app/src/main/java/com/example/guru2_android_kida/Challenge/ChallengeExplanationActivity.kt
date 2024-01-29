@@ -1,9 +1,10 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Challenge
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.guru2_android_kida.R
 
 class ChallengeExplanationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
