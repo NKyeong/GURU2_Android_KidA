@@ -29,7 +29,6 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding
         val view = binding.root
 
         binding.btnEdit.id = R.id.btnEdit
