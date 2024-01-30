@@ -13,7 +13,7 @@ import android.content.Intent
 import com.example.guru2_android_kida.HomeActivity
 import com.example.guru2_android_kida.R
 
-class personalChallengeActivity : AppCompatActivity() {
+class PersonalChallengeActivity :AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

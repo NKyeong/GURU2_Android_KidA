@@ -19,15 +19,6 @@
             android:textStyle="bold"
             android:padding="16dp"/>
 
-        <!-- 챌린지 설명 -->
-        <TextView
-            android:id="@+id/text_challenge_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/text_challenge_description"
-            android:textSize="18sp"
-            android:padding="16dp"/>
-
         <!-- 이미지 -->
         <ImageView
             android:id="@+id/image_challenge"
@@ -36,6 +27,15 @@
             android:src="@drawable/image1"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:padding="16dp"/>
+
+        <!-- 챌린지 설명 -->
+        <TextView
+            android:id="@+id/text_challenge_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_challenge_description"
+            android:textSize="18sp"
             android:padding="16dp"/>
 
         <!-- 챌린지 시작하기 버튼 -->
