@@ -106,20 +106,19 @@ class PersonalChallengeActivity :AppCompatActivity() {
         challenge3: String,
         stampsCollected: Int
     ) {
-        val dbHelper = pChallengeDbHelper(this)
-        // 데이터베이스에 쓸 수 있도록 설정
-        val db = dbHelper.writableDatabase
+        val dbHelper = ChallengeDBHelper(this)
 
-        // 새 데이터를 위한 ContentValues 객체 생성
+        // 도전과제 정보 및 도장 개수를 ChallengeDBHelper를 통해 저장
+        dbHelper.saveChallengeData("user1", challenge1, challenge2, challenge3, stampsCollected) // 'user1'은 예시입니다.
+
+        val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("challenge1", challenge1)
             put("challenge2", challenge2)
             put("challenge3", challenge3)
             put("stampsCollected", stampsCollected)
         }
-
-        // 데이터베이스에 데이터 삽입
         db.insert("challenges", null, values)
-
+        db.close()
     }
 }
