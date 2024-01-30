@@ -27,7 +27,7 @@ class RankingFragment : Fragment() {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -1)
         val lastMonth = SimpleDateFormat("MM", Locale.getDefault()).format(calendar.time)
-        binding.tvCurrentMonth.text = "#${lastMonth}월의 랭킹"
+        binding.tvCurrentMonth.text = "${lastMonth}월의 랭킹"
     }
 
     private fun getRandomNickname(): String {

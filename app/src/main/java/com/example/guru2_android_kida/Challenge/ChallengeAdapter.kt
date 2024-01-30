@@ -1,8 +1,10 @@
 package com.example.guru2_android_kida.Challenge
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeList
@@ -26,6 +28,12 @@ class ChallengeAdapter : RecyclerView.Adapter<ChallengeAdapter.ChallengeViewHold
         // 위치(position)에 해당하는 챌린지 객체를 가져와 ViewHolder에 바인딩
         val challenge = challengeList[position]
         holder.bind(challenge)
+
+        holder.itemView.findViewById<Button>(R.id.btn_start_challenge).setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, PersonalChallengeActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 
     // getItemCount 함수: 목록의 크기를 반환하는 함수
