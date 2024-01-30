@@ -12,7 +12,7 @@ class ChallengeDBHelper(context: Context) :
 
     override fun onCreate(challengedb: SQLiteDatabase?) {
         // Challenge_List_DB 테이블 생성
-        challengedb?.execSQL("CREATE TABLE Challenge_List_DB(카테고리 text, 챌린지이름 text, 챌린지내용 text)")
+        //challengedb?.execSQL("CREATE TABLE Challenge_List_DB(카테고리 text, 챌린지이름 text, 챌린지내용 text)")
         // 사용자 챌린지 정보를 저장할 테이블 생성
         challengedb?.execSQL("CREATE TABLE User_Challenge_Info(username text, 챌린지이름 text)")
     }
