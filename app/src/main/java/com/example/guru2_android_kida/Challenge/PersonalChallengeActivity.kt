@@ -47,13 +47,12 @@ class PersonalChallengeActivity :AppCompatActivity() {
 
         // '챌린지 참여하기' 버튼 이벤트 처리
         btnJoinChallenge.setOnClickListener {
-            // 입력된 도전과제 데이터 저장
-            saveChallengeData(
-                etChallenge1.text.toString(),
-                etChallenge2.text.toString(),
-                etChallenge3.text.toString(),
-                0 // 도장 수는 예시로 0을 사용합니다.
-            )
+            val challenge1 = etChallenge1.text.toString()
+            val challenge2 = etChallenge2.text.toString()
+            val challenge3 = etChallenge3.text.toString()
+
+            val dbHelper = ChallengeDBHelper(this)
+            dbHelper.saveChallengeData("user1", challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
             navigateToHomeScreen()
         }
     }

@@ -28,11 +28,15 @@ class ChallengeDBHelper(context: Context) :
     }
 
     // 사용자가 챌린지에 참여하는 메서드
-    fun joinChallenge(username: String, challengeName: String): Boolean {
+    fun joinChallenge(username: String, challengeName: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues().apply {
             put("username", username)
             put("챌린지이름", challengeName)
+            put("challenge1", challenge1)
+            put("challenge2", challenge2)
+            put("challenge3", challenge3)
+            put("stampsCollected", stampsCollected)
         }
 
         val result = db.insert("User_Challenge_Info", null, contentValues)
@@ -90,7 +94,16 @@ class ChallengeDBHelper(context: Context) :
             put("stampsCollected", stampsCollected)
         }
 
-        db.insert("User_Challenge_Info", null, contentValues)
+        // 데이터 존재 여부 확인
+        val cursor = db.rawQuery("SELECT * FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
+        if (cursor.count > 0) {
+            // 기존 데이터 업데이트
+            db.update("User_Challenge_Info", contentValues, "username = ?", arrayOf(username))
+        } else {
+            // 새로운 데이터 추가
+            db.insert("User_Challenge_Info", null, contentValues)
+        }
+        cursor.close()
         db.close()
     }
 
