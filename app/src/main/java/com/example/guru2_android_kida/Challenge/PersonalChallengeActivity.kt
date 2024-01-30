@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import android.content.ContentValues
 import android.content.Intent
+import android.view.LayoutInflater
 import com.example.guru2_android_kida.HomeActivity
 import com.example.guru2_android_kida.R
 
@@ -83,16 +84,16 @@ class PersonalChallengeActivity :AppCompatActivity() {
 
     // 도장판 초기화 함수
     private fun initializeStampGrid(gridLayout: GridLayout) {
-        for (i in 1..30) {
-            val stamp = ImageView(this)
-            // 도장 이미지 설정
-            stamp.setImageResource(R.drawable.indicator_dot_unselected)
+        val totalStamps = 5 * 6 // 5행 6열
+
+        for (i in 0 until totalStamps) {
+            val stamp = LayoutInflater.from(this).inflate(R.layout.stamp_item, gridLayout, false)
             gridLayout.addView(stamp)
 
-            // 도장 이미지의 레이아웃 파라미터 설정
+            // GridLayout 파라미터 설정
             val params = stamp.layoutParams as GridLayout.LayoutParams
-            params.width = 0
-            params.height = 0
+            params.width = resources.getDimensionPixelSize(R.dimen.stamp_size)
+            params.height = resources.getDimensionPixelSize(R.dimen.stamp_size)
             params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
             params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
             stamp.layoutParams = params

@@ -75,7 +75,9 @@
         android:rowCount="5"
         android:layout_marginTop="8dp">
 
-    </GridLayout>
+    <!-- 도장 아이템 추가 (프로그래밍적으로 추가될 예정) -->
+
+</GridLayout>
 
     <!-- "챌린지 참여하기" 버튼 -->
     <Button

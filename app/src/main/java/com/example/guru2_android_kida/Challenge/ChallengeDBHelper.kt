@@ -126,4 +126,16 @@ class ChallengeDBHelper(context: Context) :
         }
     }
 
+    // 특정 사용자의 총 도장 개수를 조회하는 메서드
+    fun getStampsCollected(username: String): Int {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT stampsCollected FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
+        var stampsCollected = 0
+        if (cursor.moveToFirst()) {
+            stampsCollected = cursor.getInt(cursor.getColumnIndex("stampsCollected"))
+        }
+        cursor.close()
+        db.close()
+        return stampsCollected
+    }
 }
