@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stamp_size">48dp</dimen> <!-- 예시: 도장 아이템의 크기 -->
+</resources>
