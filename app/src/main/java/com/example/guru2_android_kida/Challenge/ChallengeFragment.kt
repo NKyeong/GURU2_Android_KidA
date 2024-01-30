@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import androidx.fragment.app.Fragment
-import com.example.guru2_android_kida.ChallengeCategoryActivity
 import com.example.guru2_android_kida.ImageSliderAdapter
 import com.example.guru2_android_kida.Indicator
 import com.example.guru2_android_kida.R

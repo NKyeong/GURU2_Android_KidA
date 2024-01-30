@@ -1,14 +1,17 @@
-package com.example.guru2_android_kida
+package com.example.guru2_android_kida.Challenge
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
 import com.example.guru2_android_kida.Challenge.ChallengeList
+import com.example.guru2_android_kida.R
 
 class ChallengeCategoryActivity : AppCompatActivity() {
 
@@ -57,4 +60,5 @@ class ChallengeCategoryActivity : AppCompatActivity() {
 
         return challengeList
     }
+
 }
