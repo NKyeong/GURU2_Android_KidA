@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.guru2_android_kida.Challenge.ChallengeList
 import com.example.guru2_android_kida.R
 
@@ -32,6 +34,7 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
         val challenge = challengeList[position]
         holder.bind(challenge)
 
+        // 챌린지 시작하기 버튼
         holder.itemView.findViewById<Button>(R.id.btn_start_challenge).setOnClickListener {
             // 클릭 이벤트 발생 시 ChallengeItemClickListener의 메서드 호출
             clickListener.onChallengeStartClicked(challenge.challengeName)
@@ -59,6 +62,11 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
             // ViewHolder에 있는 TextView에 챌린지 제목과 설명을 설정
             itemView.findViewById<TextView>(R.id.text_challenge_title).text = challenge.challengeName
             itemView.findViewById<TextView>(R.id.text_challenge_description).text = challenge.challengeDescription
+
+            // 이미지 설정
+            Glide.with(itemView.context)
+                .load(challenge.imageResourceId) // 이미지 경로나 URL을 전달
+                .into(itemView.findViewById<ImageView>(R.id.image_challenge))
         }
     }
 }
