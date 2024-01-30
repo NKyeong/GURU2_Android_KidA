@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -58,18 +59,21 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/lifeBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="생활습관" />
 
                     <Button
+                        android:id="@+id/foodBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="식습관" />
 
                     <Button
+                        android:id="@+id/exerciseBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -83,18 +87,21 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/studyBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="공부" />
 
                     <Button
+                        android:id="@+id/hobbyBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="취미생활" />
 
                     <Button
+                        android:id="@+id/extraBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -113,6 +120,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/popularText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="오늘의 인기 챌린지" />
@@ -143,6 +151,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/myChallengeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="내 챌린지 관리" />

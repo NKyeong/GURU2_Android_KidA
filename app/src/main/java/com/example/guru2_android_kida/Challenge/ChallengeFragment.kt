@@ -1,13 +1,16 @@
 package com.example.guru2_android_kida.Challenge
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import androidx.fragment.app.Fragment
+import com.example.guru2_android_kida.ChallengeCategoryActivity
 import com.example.guru2_android_kida.ImageSliderAdapter
 import com.example.guru2_android_kida.Indicator
 import com.example.guru2_android_kida.R
@@ -23,8 +26,26 @@ class ChallengeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_challenge, container, false)
     }
 
+    @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val lifeBtn: Button = view.findViewById(R.id.lifeBtn)
+        val foodBtn: Button = view.findViewById(R.id.foodBtn)
+        val exerciseBtn: Button = view.findViewById(R.id.exerciseBtn)
+        val studyBtn: Button = view.findViewById(R.id.studyBtn)
+        val hobbyBtn: Button = view.findViewById(R.id.hobbyBtn)
+        val extraBtn: Button = view.findViewById(R.id.extraBtn)
+
+        // 각 버튼에 대한 클릭 이벤트 처리
+        lifeBtn.setOnClickListener { navigateToCategory("생활습관") }
+        foodBtn.setOnClickListener { navigateToCategory("식습관") }
+        exerciseBtn.setOnClickListener { navigateToCategory("운동") }
+        studyBtn.setOnClickListener { navigateToCategory("공부") }
+        hobbyBtn.setOnClickListener { navigateToCategory("취미생활") }
+        extraBtn.setOnClickListener { navigateToCategory("기타") }
+
+        //
 
         //populatViewPage 이미지 슬라이드
         val popularViewPager: ViewPager2 = view.findViewById(R.id.popularViewPager)
@@ -69,15 +90,12 @@ class ChallengeFragment : Fragment() {
                 indicator2.selectDot(position)
             }
         })
+    }
 
-        // 세번째 메뉴(3rd menu) 클릭 시 이벤트 처리
-        val thirdMenuLayout: LinearLayout = view.findViewById(R.id.popularIndicatorLayout)
-        thirdMenuLayout.setOnClickListener {
-            // 챌린지 상세 화면으로 이동하는 인텐트 생성
-            val intent = Intent(requireContext(), ChallengeExplanationActivity::class.java)
-            // 필요한 경우 챌린지에 대한 정보를 인텐트에 추가할 수 있습니다.
-            // intent.putExtra("challengeId", challengeId) 등
-            startActivity(intent)
-        }
+    // 카테고리 별 챌린지 페이지로 이동하는 함수
+    private fun navigateToCategory(category: String) {
+        val intent = Intent(context, ChallengeCategoryActivity::class.java)
+        intent.putExtra("category", category)
+        startActivity(intent)
     }
 }
