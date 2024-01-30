@@ -33,18 +33,7 @@
         android:id="@+id/recyclerViewRanking"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tvCurrentMonth"
-        android:padding="8dp" />
-
-    <!-- 하단 메뉴 바 자리 -->
-    <LinearLayout
-        android:id="@+id/layoutBottomMenu"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <!-- 여기에 메뉴 항목 추가 -->
-    </LinearLayout>
+    android:layout_below="@id/tvCurrentMonth"
+    android:padding="8dp" />
 
 </RelativeLayout>
