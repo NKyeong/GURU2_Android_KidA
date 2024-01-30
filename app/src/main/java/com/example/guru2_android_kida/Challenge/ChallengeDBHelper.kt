@@ -3,6 +3,7 @@ package com.example.guru2_android_kida.Challenge
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -150,5 +151,48 @@ class ChallengeDBHelper(context: Context) :
         cursor.close()
         db.close()
         return stampsCollected
+    }
+
+    @SuppressLint("Range")
+    // 사용자의 username 불러오기
+    fun getUsername(username: String): String? {
+        val db = this.readableDatabase
+        val cursor: Cursor?
+
+        try {
+            cursor = db.rawQuery("SELECT username FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
+        } catch (e: Exception) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS User_Challenge_Info(username TEXT, 챌린지이름 TEXT)")
+            return null
+        }
+
+        var result: String? = null
+
+        if (cursor.moveToFirst()) {
+            result = cursor.getString(cursor.getColumnIndex("username"))
+        }
+
+        cursor.close()
+        db.close()
+
+        return result
+    }
+
+
+    // 챌린지 삭제 메서드
+    fun removeChallenges(challengeIds: List<Int>): Boolean {
+        val db = this.writableDatabase
+
+        try {
+            for (id in challengeIds) {
+                db.delete("User_Challenge_Info", "_id = ?", arrayOf(id.toString()))
+            }
+            return true
+        } catch (e: Exception) {
+            // 오류 처리
+            return false
+        } finally {
+            db.close()
+        }
     }
 }
