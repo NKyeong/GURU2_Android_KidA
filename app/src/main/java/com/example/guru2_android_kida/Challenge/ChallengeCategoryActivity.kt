@@ -1,5 +1,8 @@
 package com.example.guru2_android_kida.Challenge
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +16,7 @@ import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
 import com.example.guru2_android_kida.Challenge.ChallengeList
 import com.example.guru2_android_kida.R
 
-class ChallengeCategoryActivity : AppCompatActivity() {
+class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var challengeAdapter: ChallengeAdapter
@@ -28,7 +31,7 @@ class ChallengeCategoryActivity : AppCompatActivity() {
         // RecyclerView 초기화
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        challengeAdapter = ChallengeAdapter()
+        challengeAdapter = ChallengeAdapter(this)
         recyclerView.adapter = challengeAdapter
 
         // Intent로부터 카테고리 정보 가져오기
@@ -41,6 +44,7 @@ class ChallengeCategoryActivity : AppCompatActivity() {
         challengeAdapter.submitList(challengeList)
     }
 
+    @SuppressLint("Range")
     private fun getChallengesByCategory(category: String): List<ChallengeList> {
         val challengeList = mutableListOf<ChallengeList>()
         val db = dbHelper.readableDatabase
@@ -59,6 +63,16 @@ class ChallengeCategoryActivity : AppCompatActivity() {
         db.close()
 
         return challengeList
+    }
+
+    // ChallengeItemClickListener의 메서드 구현
+    override fun onChallengeStartClicked(challengeName: String) {
+        // 현재 로그인한 사용자의 이름을 가져오기
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
+        // User_Challenge_Info 테이블에 챌린지 이름 추가 또는 업데이트
+        val challengeDBHelper = ChallengeDBHelper(this)
+        challengeDBHelper.updateUserChallengeInfo(currentUsername, challengeName)
     }
 
 }

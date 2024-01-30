@@ -93,4 +93,37 @@ class ChallengeDBHelper(context: Context) :
         db.insert("User_Challenge_Info", null, contentValues)
         db.close()
     }
+
+    @SuppressLint("Range")
+    // User_Challenge_Info 테이블에 새로운 챌린지 정보 추가 또는 업데이트
+    fun updateUserChallengeInfo(username: String, challengeName: String) {
+        val db = this.writableDatabase
+        // 해당 사용자와 챌린지에 대한 정보를 가져옴
+        val cursor = db.rawQuery(
+            "SELECT * FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?",
+            arrayOf(username, challengeName)
+        )
+        if (cursor.moveToFirst()) {
+            // 이미 해당 사용자와 챌린지에 대한 정보가 있으면 업데이트
+            val challengeInfoId = cursor.getInt(cursor.getColumnIndex("id"))
+            val existingChallengeName = cursor.getString(cursor.getColumnIndex("챌린지이름"))
+
+            if (existingChallengeName.isNullOrEmpty()) {
+                // 챌린지 정보가 비어있으면 업데이트
+                val contentValues = ContentValues()
+                contentValues.put("챌린지이름", challengeName)
+                db.update("User_Challenge_Info", contentValues, "id = ?", arrayOf(challengeInfoId.toString()))
+            } else {
+                // 챌린지 정보가 비어있지 않다면 추가
+                val contentValues = ContentValues()
+                contentValues.put("username", username)
+                contentValues.put("챌린지이름", challengeName)
+
+                db.insert("User_Challenge_Info", null, contentValues)
+            }
+            cursor.close()
+            db.close()
+        }
+    }
+
 }
