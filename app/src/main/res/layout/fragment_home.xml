@@ -39,14 +39,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.691" />
 
-            <TextView
-                android:id="@+id/textViewChallengeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:onClick="goToNextScreen"
-                android:text=" - 챌린지 이름이 표시되며 글자를 누르면 페이지가 이동합니다."
-                android:textSize="20sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/challengeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -40,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
                 // username과 password 가 일치할때 -> 로그인 메시지, 홈 화면으로 이동
                 if (checkUserpass == true) {
                     Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+
+                    // 로그인 성공 시에 해당 유저의 username을 ChallengeDBHelper에 추가
+                    DB?.onLoginSuccess(user)
+
                     val intent = Intent(applicationContext, HomeActivity::class.java) // 홈 화면 액티비티 넣으면 됨
                     startActivity(intent) // 로그인에 성공하면 홈 화면으로 이동
                 }

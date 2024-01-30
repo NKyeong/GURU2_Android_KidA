@@ -4,8 +4,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
 
-class DBHelper(context: Context) :
+class DBHelper(private val context: Context) :
     SQLiteOpenHelper(context, "Login.db", null, 1) {
     // 로그인 DB 테이블을 생성
     override fun onCreate(MyDB: SQLiteDatabase?) {
@@ -47,4 +48,17 @@ class DBHelper(context: Context) :
         // db 이름을 "Login.db"로 설정
         const val DBNAME = "Login.db"
     }
+
+    // 로그인이 성공했을 때 호출되는 메서드
+    fun onLoginSuccess(username: String) {
+        val challengeDBHelper = ChallengeDBHelper(context)
+
+        // 해당 username이 User_Challenge_Info 테이블에 이미 있는지 확인
+        if (!challengeDBHelper.isUsernameExists(username)) {
+            // username이 테이블에 없다면 추가
+            challengeDBHelper.addUsernameToUserChallengeInfo(username)
+        }
+    }
+
+
 }

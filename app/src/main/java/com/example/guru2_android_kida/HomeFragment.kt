@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CalendarView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
+import com.example.guru2_android_kida.HomeDetail.ChallengeNameAdapter
 import com.example.guru2_android_kida.HomeDetail.ToDoAdapter
 import com.example.guru2_android_kida.HomeDetail.ToDoItem
 import com.example.guru2_android_kida.HomeDetail.TodoDBHelper
@@ -21,17 +24,23 @@ import java.util.Locale
 class HomeFragment : Fragment(R.layout.fragment_home) {
     // 데이터베이스 헬퍼 인스턴스
     private lateinit var dbHelper: TodoDBHelper
+    private lateinit var challengeDBHelper: ChallengeDBHelper // ChallengeDBHelper 추가
+
     // UI 요소들
     private lateinit var calendarView: CalendarView
     private lateinit var recyclerView: RecyclerView
     private lateinit var addButton: Button
     private lateinit var toDoAdapter: ToDoAdapter
+    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추기
+
 
     // 초기에는 빈 리스트로 초기화
     private val todoList = mutableListOf<ToDoItem>()
+    private val challengeList = mutableListOf<String>() // 챌린지 정보 리스트 추가
 
-    // todoListCache 추가
+    // todoListCache 추가, challengeListCache 추가
     private val todoListCache = mutableMapOf<String, List<ToDoItem>>()
+    private val challengeListCache = mutableMapOf<String, List<String>>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // 데이터베이스 헬퍼 초기화
         dbHelper = TodoDBHelper(requireContext())
+        challengeDBHelper = ChallengeDBHelper(requireContext()) // ChallengeDBHelper 초기화 추가
 
         //캘린더 뷰
         calendarView = view.findViewById(R.id.calendarView)
@@ -55,9 +65,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         //todolist어댑터 설정
         toDoAdapter = ToDoAdapter(todoList)
+        challengeNameAdapter = ChallengeNameAdapter(challengeList) // ChallengeNameAdapter 초기화 추가
+
         // 리사이클러뷰 어댑터 설정
         recyclerView.adapter = toDoAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // ChallengeNameAdapter를 적용하도록 추가
+        val challengeRecyclerView = view.findViewById<RecyclerView>(R.id.challengeRecyclerView)
+        challengeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        challengeRecyclerView.adapter = challengeNameAdapter
+
+        // 홈 화면이 로딩될 때 바로 챌린지 목록을 표시
+        showChallengeList()
 
         // CalendarView의 날짜 변경 이벤트 처리
         calendarView.setOnDateChangeListener { View, year, month, dayOfMonth ->
@@ -86,6 +106,36 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         showTodoList(currentDate)
 
         return view
+    }
+
+    // 홈 화면이 로딩될 때 챌린지 목록을 가져와 표시하는 메서드 추가
+    private fun showChallengeList() {
+        // 현재 로그인한 사용자의 이름을 가져오는 메서드 (적절한 메서드로 대체)
+        val currentChallengeName = getCurrentChallengename()
+
+        // ChallengeDBHelper를 사용하여 사용자의 챌린지 목록을 가져옴
+        val userChallenges = challengeDBHelper.getChallengesForUser(currentChallengeName)
+
+        // challengeListCache에 캐시 데이터 저장
+        challengeListCache[currentChallengeName] = userChallenges
+
+        // 어댑터의 내부 리스트를 업데이트하고 RecyclerView 갱신
+        challengeNameAdapter.setChallengeList(userChallenges)
+
+        // 텍스트 뷰에 챌린지이름을 표시
+        val challengeNameTextView = view?.findViewById<TextView>(R.id.challengeNameTextView)
+        if (userChallenges.isEmpty()) {
+            challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
+        } else {
+            challengeNameTextView?.text = userChallenges.joinToString("\n")
+        }
+    }
+
+    // 현재 로그인한 사용자의 챌린지 목록을 가져오는 가상의 메서드
+    private fun getCurrentChallengename(): String {
+        // 적절한 로직으로 현재 로그인한 사용자의 이름을 가져와서 반환
+        // (예: SharedPreferences, FirebaseAuth 등을 사용하여 구현)
+        return "CurrentUser"
     }
 
     // 할 일 아이템을 리스트에 추가하는 메서드
