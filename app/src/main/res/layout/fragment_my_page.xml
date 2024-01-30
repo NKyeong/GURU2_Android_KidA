@@ -1,56 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical">
 
     <!-- 메뉴바에서 마이페이지를 클릭했을 때 실행되는 파일 입니다. !-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/challengeView"
-        android:layout_width="409dp"
-        android:layout_height="385dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="209dp"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/userName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_weight="1"
-        android:text="닉네임"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="username"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/level"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="53dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/level"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:text="레벨"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="level"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/userName"
-        tools:layout_editor_absoluteY="53dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="수정"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="160dp"
+        android:text="챌린지 수정"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/challengeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>
