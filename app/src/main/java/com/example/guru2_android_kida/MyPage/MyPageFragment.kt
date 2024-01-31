@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.guru2_android_kida.Challenge.ChallengeAdapter
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
 import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
@@ -21,9 +22,10 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         FragmentMyPageBinding.inflate(layoutInflater)
     }
 
-    private lateinit var ChallengeDBHelper: ChallengeDBHelper
+    private lateinit var challengeDBHelper: ChallengeDBHelper
     private lateinit var userName: TextView
     private lateinit var btnEdit: Button
+    private lateinit var challengeView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,22 +34,17 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
         val view = binding.root
 
-        binding.btnEdit.id = R.id.btnEdit
+        // TextView 및 Button 초기화
         userName = binding.userName
         btnEdit = binding.btnEdit
+        challengeView = binding.challengeView
 
-        // MyDB에서 특정 username 불러오기
-        //dbHelper 초기화
-        //dbHelper = DBHelper(requireContext())
+        // ChallengeDBHelper 초기화
+        challengeDBHelper = ChallengeDBHelper(requireContext())
 
-        // 특정 username을 지정하여 사용자 정보를 가져옴
-        /*val username = 1L // 예시로 username를 1로 설정
-        val user = ChallengeDBHelper.getUser(username)
-
-        if (user != null) {
-            // 사용자 정보를 사용하여 원하는 작업 수행
-            // 예시로 로그 출력
-            userName.text = user.username}*/
+        // DB에서 특정 username 불러오기
+        val username = "desiredUsername"  // 사용자 이름을 임의로 지정
+        userName.text = challengeDBHelper.getUsername(username)  // 특정 사용자의 이름을 표시
 
 
         // 레벨 불러오기
@@ -55,18 +52,19 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
 
         // ChallengeDBHelper에서 진행중인 챌린지 불러오기
-        // 챌린지 정보를 담을 모델 클래스 만들기
-        /*val challengeView: RecyclerView = binding.challengeView
+        // 사용자가 참여 중인 챌린지 정보 가져오기
+        val userChallenges = challengeDBHelper.getChallengesForUser(username)
+
+        // RecyclerView에 적용할 어댑터 생성
+        val adapter = ChallengeAdapter(userChallenges)
+
+        // RecyclerView 설정
         challengeView.layoutManager = LinearLayoutManager(requireContext())
-
-        val challengeList = ChallengeDBHelper.getJoinedChallengesForUser()
-
-        val adapter = ChallengeAdapter(challengeList)
-        challengeView.adapter = adapter*/
+        challengeView.adapter = adapter
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
         btnEdit.setOnClickListener {
-            var intent = Intent(requireContext(), MyPageEditFragment::class.java)
+            val intent = Intent(requireContext(), MyPageEditFragment::class.java)
             startActivity(intent)
         }
 
