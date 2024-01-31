@@ -31,6 +31,9 @@
         <activity
             android:name=".Challenge.PersonalChallengeActivity"
             android:exported="false" />
+        <activity
+            android:name=".Challenge.ChallengeDetailActivity"
+            android:exported="false" />
 
 
         <activity

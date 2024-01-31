@@ -1,5 +1,7 @@
 package com.example.guru2_android_kida
 
+import android.content.Context
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -13,6 +15,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
+import com.example.guru2_android_kida.Challenge.ChallengeDetailActivity
 import com.example.guru2_android_kida.HomeDetail.ChallengeNameAdapter
 import com.example.guru2_android_kida.HomeDetail.ToDoAdapter
 import com.example.guru2_android_kida.HomeDetail.ToDoItem
@@ -21,7 +24,7 @@ import java.util.Locale
 
 // 홈 액티비티 입니다.
 // 캘린더와 챌린지 리스트가 뜨는 파일이며, 위의 HomeActivity는 각각의 플래그먼트를 띄우기 위한 메인화면으로 보면 됨.
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnChallengeClickListener {
     // 데이터베이스 헬퍼 인스턴스
     private lateinit var dbHelper: TodoDBHelper
     private lateinit var challengeDBHelper: ChallengeDBHelper // ChallengeDBHelper 추가
@@ -31,12 +34,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var addButton: Button
     private lateinit var toDoAdapter: ToDoAdapter
-    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추기
+    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추가
+
 
 
     // 초기에는 빈 리스트로 초기화
     private val todoList = mutableListOf<ToDoItem>()
-    private val challengeList = mutableListOf<String>() // 챌린지 정보 리스트 추가
+    private val challengeNameLIst = mutableListOf<String>() // 챌린지 정보 리스트 추가
 
     // todoListCache 추가, challengeListCache 추가
     private val todoListCache = mutableMapOf<String, List<ToDoItem>>()
@@ -65,7 +69,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         //todolist어댑터 설정
         toDoAdapter = ToDoAdapter(todoList)
-        challengeNameAdapter = ChallengeNameAdapter(challengeList) // ChallengeNameAdapter 초기화 추가
+        challengeNameAdapter = ChallengeNameAdapter(challengeNameLIst, challengeDBHelper, this) // ChallengeNameAdapter 초기화 추가
 
         // 리사이클러뷰 어댑터 설정
         recyclerView.adapter = toDoAdapter
@@ -111,32 +115,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     // 홈 화면이 로딩될 때 챌린지 목록을 가져와 표시하는 메서드 추가
     private fun showChallengeList() {
         // 현재 로그인한 사용자의 이름을 가져오는 메서드 (적절한 메서드로 대체)
-        val currentChallengeName = getCurrentChallengename()
 
-        // ChallengeDBHelper를 사용하여 사용자의 챌린지 목록을 가져옴
-        val userChallenges = challengeDBHelper.getChallengesForUser(currentChallengeName)
+        val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
 
-        // challengeListCache에 캐시 데이터 저장
-        challengeListCache[currentChallengeName] = userChallenges
-
-        // 어댑터의 내부 리스트를 업데이트하고 RecyclerView 갱신
-        challengeNameAdapter.setChallengeList(userChallenges)
+        // ChallengeNameAdapter를 사용하여 사용자의 챌린지 목록을 가져와 화면에 표시
+        challengeNameAdapter.setChallengeListForUser(currentUsername)
 
         // 텍스트 뷰에 챌린지이름을 표시
         val challengeNameTextView = view?.findViewById<TextView>(R.id.challengeNameTextView)
-        if (userChallenges.isEmpty()) {
+        if (challengeNameLIst.isEmpty()) {
             challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
         } else {
-            challengeNameTextView?.text = userChallenges.joinToString("\n")
+            challengeNameTextView?.text = challengeNameLIst.joinToString("\n")
         }
     }
 
     // 현재 로그인한 사용자의 챌린지 목록을 가져오는 가상의 메서드
-    private fun getCurrentChallengename(): String {
-        // 적절한 로직으로 현재 로그인한 사용자의 이름을 가져와서 반환
-        // (예: SharedPreferences, FirebaseAuth 등을 사용하여 구현)
-        return "CurrentUser"
-    }
+    /*private fun getCurrentChallengename(): String {
+
+        return currentUsername
+    }*/
 
     // 할 일 아이템을 리스트에 추가하는 메서드
     private fun addTodoItem() {
@@ -191,5 +190,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         calendar.set(year, month, dayOfMonth)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return dateFormat.format(calendar.time)
+    }
+
+    // ChallengeNameAdapter.OnChallengeClickListener 구현, 챌린지 텍스트를 눌렀을 때 화면 전환
+    override fun onChallengeClick(challengeName: String) {
+        // 챌린지 이름을 클릭했을 때의 처리
+        // ChallengeDetailActivity로 전환하고, 필요한 데이터를 전달
+        val intent = Intent(requireContext(), ChallengeDetailActivity::class.java)
+        intent.putExtra("challengeName", challengeName)
+        startActivity(intent)
+
     }
 }

@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var editId: EditText
     lateinit var editpassword: EditText
     lateinit var RegistBtn: Button
+    lateinit var enteredId: String
 
     var DB: DBHelper?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +43,8 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
                     // 로그인 성공 시에 해당 유저의 username을 ChallengeDBHelper에 추가
-                    DB?.onLoginSuccess(user)
+                    enteredId = editId.text.toString()
+                    DB?.onLoginSuccess(enteredId)
 
                     val intent = Intent(applicationContext, HomeActivity::class.java) // 홈 화면 액티비티 넣으면 됨
                     startActivity(intent) // 로그인에 성공하면 홈 화면으로 이동

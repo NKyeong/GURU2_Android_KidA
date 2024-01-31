@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,10 +67,11 @@ class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListene
     }
 
     // ChallengeItemClickListener의 메서드 구현
-    override fun onChallengeStartClicked(challengeName: String) {
+    override fun onChallengeStartClicked(challengeName: String, position: Int,  challengeList: List<ChallengeList> ) {
         // 현재 로그인한 사용자의 이름을 가져오기
         val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
+        //Log.d("SharedPreferences", "Current Username: $currentUsername")
         // User_Challenge_Info 테이블에 챌린지 이름 추가 또는 업데이트
         val challengeDBHelper = ChallengeDBHelper(this)
         challengeDBHelper.updateUserChallengeInfo(currentUsername, challengeName)

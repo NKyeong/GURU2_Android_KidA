@@ -50,20 +50,20 @@ class DBHelper(private val context: Context) :
     }
 
     // 로그인이 성공했을 때 호출되는 메서드
-    fun onLoginSuccess(username: String) {
-        val challengeDBHelper = ChallengeDBHelper(context)
+    fun onLoginSuccess(enteredId: String) {
+        val LoginDBHelper = DBHelper(context)
 
         // SharedPreferences에 현재 유저의 이름 저장 (현재 로그인한 유저의 정보를 저장하는 코드)
         val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString("current_username", username)
+        editor.putString("current_username", enteredId)
         editor.apply()
 
         // 해당 username이 User_Challenge_Info 테이블에 이미 있는지 확인
-        if (!challengeDBHelper.isUsernameExists(username)) {
+        /*if (!challengeDBHelper.isUsernameExists(username)) {
             // username이 테이블에 없다면 추가
             challengeDBHelper.addUsernameToUserChallengeInfo(username)
-        }
+        }*/
     }
 
 

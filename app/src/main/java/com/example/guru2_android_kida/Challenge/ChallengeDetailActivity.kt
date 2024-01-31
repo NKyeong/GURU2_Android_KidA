@@ -14,6 +14,9 @@ class ChallengeDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_detail)
 
+        //  "challengeName" 키로 전달된 데이터 (챌린지제목을 가져옵니다. 데이터 저장 시 사용해주세요.)
+        val challengeName = intent.getStringExtra("challengeName")
+
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
         val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)

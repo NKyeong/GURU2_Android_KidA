@@ -5,13 +5,14 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class ChallengeDBHelper(context: Context) :
-    SQLiteOpenHelper(context, "Challenge_List_DB.db", null, 1) {
+    SQLiteOpenHelper(context, "Challenge_List_DB.db", null, 2) {
 
     override fun onCreate(challengedb: SQLiteDatabase?) {
         challengedb?.execSQL(
-            "CREATE TABLE User_Challenge_Info(" +
+            "CREATE TABLE IF NOT EXISTS User_Challenge_Info(" +
                     "username text, " +
                     "챌린지이름 text, " +
                     "challenge1 TEXT, " +
@@ -28,53 +29,49 @@ class ChallengeDBHelper(context: Context) :
     }
 
     // 사용자가 챌린지에 참여하는 메서드
-    fun joinChallenge(username: String, challengeName: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int): Boolean {
+    /*fun joinChallenge(username: String, challengeName: String): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues().apply {
             put("username", username)
             put("챌린지이름", challengeName)
-            put("challenge1", challenge1)
-            put("challenge2", challenge2)
-            put("challenge3", challenge3)
-            put("stampsCollected", stampsCollected)
         }
 
         val result = db.insert("User_Challenge_Info", null, contentValues)
         db.close()
 
         return result != -1L
-    }
+    }*/
 
     @SuppressLint("Range")
     // 사용자의 챌린지 정보를 가져오는 메서드
     fun getChallengesForUser(username: String): List<String> {
+        val challengeNameLIst = mutableListOf<String>()
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT 챌린지이름 FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
-        val challenges = mutableListOf<String>()
+        val cursor = db.rawQuery("SELECT 챌린지이름 FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 IS NOT NULL", arrayOf(username))
 
         while (cursor.moveToNext()) {
-            val challenge = cursor.getString(cursor.getColumnIndex("챌린지이름"))
-            challenges.add(challenge)
+            val challengeName = cursor.getString(cursor.getColumnIndex("챌린지이름"))
+            challengeNameLIst.add(challengeName)
         }
 
         cursor.close()
         db.close()
 
-        return challenges
+        return challengeNameLIst
     }
 
     // User_Challenge_Info 테이블에 해당 username이 이미 존재하는지 확인하는 메서드
-    fun isUsernameExists(username: String): Boolean {
+    /*fun isUsernameExists(username: String): Boolean {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT * FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
         val exists = cursor.count > 0
         cursor.close()
         db.close()
         return exists
-    }
+    }*/
 
     // User_Challenge_Info 테이블에 username을 추가하는 메서드
-    fun addUsernameToUserChallengeInfo(username: String): Boolean {
+    /*fun addUsernameToUserChallengeInfo(username: String): Boolean {
         val db = writableDatabase
         val contentValues = ContentValues().apply {
             put("username", username)
@@ -82,7 +79,7 @@ class ChallengeDBHelper(context: Context) :
         val result = db.insert("User_Challenge_Info", null, contentValues)
         db.close()
         return result != -1L
-    }
+    }*/
     // 도전과제 데이터 및 도장 개수 저장
     fun saveChallengeData(username: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int) {
         val db = this.writableDatabase
@@ -94,51 +91,46 @@ class ChallengeDBHelper(context: Context) :
             put("stampsCollected", stampsCollected)
         }
 
-        // 데이터 존재 여부 확인
-        val cursor = db.rawQuery("SELECT * FROM User_Challenge_Info WHERE username = ?", arrayOf(username))
-        if (cursor.count > 0) {
-            // 기존 데이터 업데이트
-            db.update("User_Challenge_Info", contentValues, "username = ?", arrayOf(username))
+        db.insert("User_Challenge_Info", null, contentValues)
+        db.close()
+    }
+
+    @SuppressLint("Range")
+    // User_Challenge_Info 테이블에 새로운 챌린지 정보 추가 또는 업데이트
+    fun updateUserChallengeInfo(currentUsername: String, challengeName: String) {
+        val db = this.writableDatabase
+        // 해당 사용자와 챌린지에 대한 정보를 가져옴
+        val cursor = db.rawQuery(
+            "SELECT * FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?",
+            arrayOf(currentUsername, challengeName)
+        )
+        if (cursor.moveToFirst()) {
+            // 이미 해당 사용자와 챌린지에 대한 정보가 있으면 업데이트
+            val contentValues = ContentValues().apply {
+                put("챌린지이름", challengeName)
+            }
+            db.update(
+                "User_Challenge_Info",
+                contentValues,
+                "username = ? AND 챌린지이름 = ? AND 챌린지이름 IS NOT NULL AND 챌린지이름 != ''",
+                arrayOf(currentUsername, challengeName)
+            )
         } else {
-            // 새로운 데이터 추가
+
+            // 해당 사용자와 챌린지에 대한 정보가 없으면 추가
+            val contentValues = ContentValues().apply {
+                put("username", currentUsername)
+                put("챌린지이름", challengeName)
+            }
+
             db.insert("User_Challenge_Info", null, contentValues)
+
         }
         cursor.close()
         db.close()
     }
 
     @SuppressLint("Range")
-    // User_Challenge_Info 테이블에 새로운 챌린지 정보 추가 또는 업데이트
-    fun updateUserChallengeInfo(username: String, challengeName: String) {
-        val db = this.writableDatabase
-        // 해당 사용자와 챌린지에 대한 정보를 가져옴
-        val cursor = db.rawQuery(
-            "SELECT * FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?",
-            arrayOf(username, challengeName)
-        )
-        if (cursor.moveToFirst()) {
-            // 이미 해당 사용자와 챌린지에 대한 정보가 있으면 업데이트
-            val challengeInfoId = cursor.getInt(cursor.getColumnIndex("id"))
-            val existingChallengeName = cursor.getString(cursor.getColumnIndex("챌린지이름"))
-
-            if (existingChallengeName.isNullOrEmpty()) {
-                // 챌린지 정보가 비어있으면 업데이트
-                val contentValues = ContentValues()
-                contentValues.put("챌린지이름", challengeName)
-                db.update("User_Challenge_Info", contentValues, "id = ?", arrayOf(challengeInfoId.toString()))
-            } else {
-                // 챌린지 정보가 비어있지 않다면 추가
-                val contentValues = ContentValues()
-                contentValues.put("username", username)
-                contentValues.put("챌린지이름", challengeName)
-
-                db.insert("User_Challenge_Info", null, contentValues)
-            }
-            cursor.close()
-            db.close()
-        }
-    }
-
     // 특정 사용자의 총 도장 개수를 조회하는 메서드
     fun getStampsCollected(username: String): Int {
         val db = readableDatabase
