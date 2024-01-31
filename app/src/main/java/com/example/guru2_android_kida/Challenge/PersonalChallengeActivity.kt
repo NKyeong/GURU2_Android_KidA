@@ -8,26 +8,17 @@ import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues
 import android.content.Intent
 import android.view.LayoutInflater
 import com.example.guru2_android_kida.HomeActivity
 import com.example.guru2_android_kida.R
 
-class PersonalChallengeActivity : AppCompatActivity() {
+class PersonalChallengeActivity :AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_challenge)
-
-        // 인텐트에서 사용자 이름과 챌린지 이름 받기
-        val username = intent.getStringExtra("username")
-        val challengeName = intent.getStringExtra("challengeName")
-
-        // 사용자 이름이나 챌린지 이름이 전달되지 않았다면 활동 종료
-        if (username == null || challengeName == null) {
-            finish()
-            return
-        }
 
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
@@ -48,6 +39,12 @@ class PersonalChallengeActivity : AppCompatActivity() {
         // 도장판 초기화
         initializeStampGrid(gridLayoutStamps)
 
+        //홈화면으로 이동
+        fun navigateToHomeScreen() {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
         // '챌린지 참여하기' 버튼 이벤트 처리
         btnJoinChallenge.setOnClickListener {
             val challenge1 = etChallenge1.text.toString()
@@ -55,23 +52,30 @@ class PersonalChallengeActivity : AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0)
-
+            dbHelper.saveChallengeData(challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
             navigateToHomeScreen()
         }
     }
 
     // 도전과제 입력 필드 리스너 설정 함수
-    private fun setupChallengeInputListeners(et1: EditText, et2: EditText, et3: EditText, joinButton: Button) {
+    private fun setupChallengeInputListeners(
+        et1: EditText,
+        et2: EditText,
+        et3: EditText,
+        joinButton: Button
+    ) {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                joinButton.isEnabled = et1.text.isNotEmpty() && et2.text.isNotEmpty() && et3.text.isNotEmpty()
+                // 모든 도전과제 필드가 채워져 있을 때만 '챌린지 참여하기' 버튼을 활성화
+                joinButton.isEnabled =
+                    et1.text.isNotEmpty() && et2.text.isNotEmpty() && et3.text.isNotEmpty()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
+        // 각 입력 필드에 리스너 추가
         et1.addTextChangedListener(textWatcher)
         et2.addTextChangedListener(textWatcher)
         et3.addTextChangedListener(textWatcher)
@@ -85,6 +89,7 @@ class PersonalChallengeActivity : AppCompatActivity() {
             val stamp = LayoutInflater.from(this).inflate(R.layout.stamp_item, gridLayout, false)
             gridLayout.addView(stamp)
 
+            // GridLayout 파라미터 설정
             val params = stamp.layoutParams as GridLayout.LayoutParams
             params.width = resources.getDimensionPixelSize(R.dimen.stamp_size)
             params.height = resources.getDimensionPixelSize(R.dimen.stamp_size)
@@ -94,9 +99,26 @@ class PersonalChallengeActivity : AppCompatActivity() {
         }
     }
 
-    // 홈 화면으로 이동하는 함수
-    private fun navigateToHomeScreen() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
+    // 도전과제 데이터 저장 함수
+    private fun saveChallengeData(
+        challenge1: String,
+        challenge2: String,
+        challenge3: String,
+        stampsCollected: Int
+    ) {
+        val dbHelper = ChallengeDBHelper(this)
+
+        // 도전과제 정보 및 도장 개수를 ChallengeDBHelper를 통해 저장
+        dbHelper.saveChallengeData(challenge1, challenge2, challenge3, stampsCollected) // 'user1'은 예시입니다.
+
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put("challenge1", challenge1)
+            put("challenge2", challenge2)
+            put("challenge3", challenge3)
+            put("stampsCollected", stampsCollected)
+        }
+        db.insert("challenges", null, values)
+        db.close()
     }
 }
