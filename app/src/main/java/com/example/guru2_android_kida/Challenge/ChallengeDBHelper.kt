@@ -81,6 +81,7 @@ class ChallengeDBHelper(context: Context) :
         db.close()
         return result != -1L
     }*/
+
     // 도전과제 데이터 저장 및 도장 개수 업데이트
     fun saveChallengeData(username: String, challengeName: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int) {
         val db = this.writableDatabase
@@ -96,15 +97,11 @@ class ChallengeDBHelper(context: Context) :
         if (cursor.moveToFirst()) {
             // Record exists, update it
             db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
-        } else {
-            // Record does not exist, insert a new one
-            contentValues.put("username", username)
-            contentValues.put("챌린지이름", challengeName)
-            db.insert("User_Challenge_Info", null, contentValues)
         }
         cursor.close()
         db.close()
     }
+
 
 
     @SuppressLint("Range")

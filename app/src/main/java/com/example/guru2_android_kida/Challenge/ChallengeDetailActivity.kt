@@ -33,26 +33,22 @@ class ChallengeDetailActivity : AppCompatActivity() {
         // 정보 설정
         if (challengeInfo != null) {
             tvChallenge1.text = challengeInfo.challenge1
-        }
-        if (challengeInfo != null) {
             tvChallenge2.text = challengeInfo.challenge2
-        }
-        if (challengeInfo != null) {
             tvChallenge3.text = challengeInfo.challenge3
+
+            // 도장판 초기화
+            initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected.toInt())
+        } else {
+            // 적절한 오류 메시지 또는 기본값 설정
         }
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
-            finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
-        }
-
-        // 도장판 초기화
-        if (challengeInfo != null) {
-            initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected)
+            finish()
         }
     }
 
-    // 도장판 초기화 함수
+        // 도장판 초기화 함수
     private fun initializeStampGrid(gridLayout: GridLayout, stampsCollected: Int) {
         val totalStamps = 5 * 6 // 5행 6열
 
