@@ -24,7 +24,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
     private lateinit var challengeDBHelper: ChallengeDBHelper
     private lateinit var userName: TextView
-    private lateinit var btnEdit: Button
+    //private lateinit var btnEdit: Button
     private lateinit var challengeView: RecyclerView
 
     override fun onCreateView(
@@ -32,11 +32,11 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         savedInstanceState: Bundle?
     ): View? {
 
-        /*val view = binding.root
+        val view = binding.root
 
         // TextView 및 Button 초기화
         userName = binding.userName
-        btnEdit = binding.btnEdit
+        //btnEdit = binding.btnEdit
         challengeView = binding.challengeView
 
         // ChallengeDBHelper 초기화
@@ -56,17 +56,18 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         val userChallenges = challengeDBHelper.getChallengesForUser(username)
 
         // RecyclerView에 적용할 어댑터 생성
-        val adapter = ChallengeAdapter(userChallenges)
+        /*val adapter = ChallengeAdapter(userChallenges)
 
         // RecyclerView 설정
         challengeView.layoutManager = LinearLayoutManager(requireContext())
-        challengeView.adapter = adapter
+        challengeView.adapter = adapter*/
+
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
-        btnEdit.setOnClickListener {
-            val intent = Intent(requireContext(), MyPageEditFragment::class.java)
+        binding.btnEdit.setOnClickListener {
+            val intent = Intent(requireContext(), MyPageEditActivity::class.java)
             startActivity(intent)
-        }*/
+        }
 
         return view
     }

@@ -35,6 +35,10 @@
             android:name=".Challenge.ChallengeDetailActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".MyPage.MyPageEditActivity"
+            android:exported="false" />
+
 
         <activity
             android:name=".IntroActivity"
