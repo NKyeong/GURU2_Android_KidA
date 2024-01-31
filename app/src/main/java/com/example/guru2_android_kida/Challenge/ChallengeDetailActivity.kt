@@ -31,9 +31,15 @@ class ChallengeDetailActivity : AppCompatActivity() {
         val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
 
         // 정보 설정
-        tvChallenge1.text = challengeInfo.challenge1
-        tvChallenge2.text = challengeInfo.challenge2
-        tvChallenge3.text = challengeInfo.challenge3
+        if (challengeInfo != null) {
+            tvChallenge1.text = challengeInfo.challenge1
+        }
+        if (challengeInfo != null) {
+            tvChallenge2.text = challengeInfo.challenge2
+        }
+        if (challengeInfo != null) {
+            tvChallenge3.text = challengeInfo.challenge3
+        }
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
@@ -41,7 +47,9 @@ class ChallengeDetailActivity : AppCompatActivity() {
         }
 
         // 도장판 초기화
-        initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected)
+        if (challengeInfo != null) {
+            initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected)
+        }
     }
 
     // 도장판 초기화 함수
