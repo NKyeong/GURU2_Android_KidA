@@ -44,7 +44,21 @@ class ChallengeDetailActivity : AppCompatActivity() {
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
-            finish()
+            // 현재 챌린지 이름 가져오기
+            //val currentChallengeName = intent.getStringExtra("challengeName")
+            // 값이 null이 아닌 경우에만 챌린지 삭제 메서드 호출
+            challengeName?.let { name ->
+                // ChallengeDBHelper 인스턴스 생성
+                val dbHelper = ChallengeDBHelper(this)
+                // 챌린지 삭제 메서드 호출
+                dbHelper.deleteChallenge(challengeName)
+            }
+            finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
+        }
+
+        // 도장판 초기화
+        if (challengeInfo != null) {
+            initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected)
         }
     }
 

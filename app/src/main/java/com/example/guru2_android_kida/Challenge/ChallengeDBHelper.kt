@@ -103,7 +103,6 @@ class ChallengeDBHelper(context: Context) :
     }
 
 
-
     @SuppressLint("Range")
     // User_Challenge_Info 테이블에 새로운 챌린지 정보 추가 또는 업데이트
     fun updateUserChallengeInfo(currentUsername: String, challengeName: String) {
@@ -195,12 +194,15 @@ class ChallengeDBHelper(context: Context) :
             db.close()
         }
     }
+
     data class ChallengeInfo(
         val challenge1: String,
         val challenge2: String,
         val challenge3: String,
         val stampsCollected: Int
     )
+
+    @SuppressLint("Range")
     fun getChallengeInfo(username: String, challengeName: String): ChallengeInfo? {
         val db = this.readableDatabase
         val cursor = db.rawQuery(
@@ -220,4 +222,10 @@ class ChallengeDBHelper(context: Context) :
         return challengeInfo
     }
 
+    // 챌린지 삭제 메서드 추가
+    fun deleteChallenge(challengeName: String) {
+        val db = this.writableDatabase
+        db.delete("User_Challenge_Info", "챌린지이름=?", arrayOf(challengeName))
+        db.close()
+    }
 }

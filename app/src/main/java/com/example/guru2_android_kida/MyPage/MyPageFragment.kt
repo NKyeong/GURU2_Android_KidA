@@ -32,7 +32,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = binding.root
+        /*val view = binding.root
 
         // TextView 및 Button 초기화
         userName = binding.userName
@@ -66,7 +66,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         btnEdit.setOnClickListener {
             val intent = Intent(requireContext(), MyPageEditFragment::class.java)
             startActivity(intent)
-        }
+        }*/
 
         return view
     }

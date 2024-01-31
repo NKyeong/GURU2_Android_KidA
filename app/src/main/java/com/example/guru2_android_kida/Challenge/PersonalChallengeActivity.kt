@@ -49,7 +49,7 @@ class PersonalChallengeActivity : AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
+            dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0.toInt()) // 초기 도장 개수 0
 
             navigateToHomeScreen()
         }
