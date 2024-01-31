@@ -1,6 +1,7 @@
 package com.example.guru2_android_kida.Challenge
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.ImageView
@@ -18,6 +19,8 @@ class ChallengeDetailActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username") ?: "defaultUser"
         val challengeName = intent.getStringExtra("challengeName") ?: "defaultChallenge"
 
+        Log.d("ChallengeDetail", "Username: $username, ChallengeName: $challengeName")
+
         val dbHelper = ChallengeDBHelper(this)
 
         // 도전과제 정보 조회
@@ -33,12 +36,10 @@ class ChallengeDetailActivity : AppCompatActivity() {
         // 정보 설정
         if (challengeInfo != null) {
             tvChallenge1.text = challengeInfo.challenge1
-        }
-        if (challengeInfo != null) {
             tvChallenge2.text = challengeInfo.challenge2
-        }
-        if (challengeInfo != null) {
             tvChallenge3.text = challengeInfo.challenge3
+        } else {
+            Log.d("ChallengeDetail", "No challenge info found for Username: $username, ChallengeName: $challengeName")
         }
 
         // '뒤로 가기' 버튼 이벤트 처리
