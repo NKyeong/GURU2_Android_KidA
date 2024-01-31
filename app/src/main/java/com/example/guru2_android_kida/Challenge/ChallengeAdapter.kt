@@ -41,17 +41,10 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
             // 클릭 이벤트 발생 시 ChallengeItemClickListener의 메서드 호출
             clickListener.onChallengeStartClicked(challenge.challengeName, position, challengeList)
             val context = holder.itemView.context
-
-            // 인텐트 생성 및 챌린지 이름 전달
-            val intent = Intent(context, ChallengeDetailActivity::class.java).apply {
-                putExtra("challengeName", challenge.challengeName)
-                // 여기서 "username"에 해당하는 사용자 이름을 추가해야 합니다.
-                // 예시: putExtra("username", "ActualUsername")
-            }
+            val intent = Intent(context, PersonalChallengeActivity::class.java)
             context.startActivity(intent)
         }
     }
-
 
     // getItemCount 함수: 목록의 크기를 반환하는 함수
     override fun getItemCount(): Int {

@@ -65,6 +65,26 @@ class DBHelper(private val context: Context) :
             challengeDBHelper.addUsernameToUserChallengeInfo(username)
         }*/
     }
+    // 현재 로그인한 사용자의 이름을 가져오는 메서드
+    fun getCurrentUsername(): String? {
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("current_username", null)
+    }
+
+    // 선택된 챌린지 이름을 저장하는 메서드
+    fun setSelectedChallengeName(challengeName: String) {
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("selected_challenge_name", challengeName)
+            apply()
+        }
+    }
+
+    // 선택된 챌린지 이름을 가져오는 메서드
+    fun getSelectedChallengeName(): String? {
+        val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("selected_challenge_name", null)
+    }
 
 
 }
