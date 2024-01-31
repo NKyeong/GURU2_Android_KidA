@@ -13,7 +13,7 @@ import com.example.guru2_android_kida.Challenge.ChallengeList
 import com.example.guru2_android_kida.R
 
 interface ChallengeItemClickListener {
-    fun onChallengeStartClicked(challengeName: String, position: Int,  challengeList: List<ChallengeList>)
+    fun onChallengeStartClicked(challengeName: String)
 }
 // ChallengeAdapter 클래스: RecyclerView의 데이터를 관리하고 화면에 표시하는 어댑터
 class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : RecyclerView.Adapter<ChallengeAdapter.ChallengeViewHolder>() {
@@ -62,11 +62,13 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
             // ViewHolder에 있는 TextView에 챌린지 제목과 설명을 설정
             itemView.findViewById<TextView>(R.id.text_challenge_title).text = challenge.challengeName
             itemView.findViewById<TextView>(R.id.text_challenge_description).text = challenge.challengeDescription
+            itemView.findViewById<ImageView>(R.id.image_challenge).setImageResource(challenge.imageResourceId)
 
+            /*
             // 이미지 설정
             Glide.with(itemView.context)
                 .load(challenge.imageResourceId) // 이미지 경로나 URL을 전달
-                .into(itemView.findViewById<ImageView>(R.id.image_challenge))
+                .into(itemView.findViewById<ImageView>(R.id.image_challenge)) */
         }
     }
 }
