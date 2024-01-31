@@ -25,10 +25,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".Challenge.ChallengeExplanationActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".Challenge.PersonalChallengeActivity"
             android:exported="false" />
         <activity
