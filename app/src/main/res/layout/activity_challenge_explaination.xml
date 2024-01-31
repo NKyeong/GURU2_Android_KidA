@@ -28,7 +28,7 @@
             android:adjustViewBounds="true"
             android:padding="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/image2" />
+            android:src="@drawable/image5" />
 
         <!-- 챌린지 설명 -->
         <TextView

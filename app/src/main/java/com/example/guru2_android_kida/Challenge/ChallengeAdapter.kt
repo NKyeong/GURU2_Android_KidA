@@ -8,8 +8,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-//import com.bumptech.glide.Glide
-import com.example.guru2_android_kida.Challenge.ChallengeList
 import com.example.guru2_android_kida.R
 
 interface ChallengeItemClickListener {
@@ -62,7 +60,7 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
             // ViewHolder에 있는 TextView에 챌린지 제목과 설명을 설정
             itemView.findViewById<TextView>(R.id.text_challenge_title).text = challenge.challengeName
             itemView.findViewById<TextView>(R.id.text_challenge_description).text = challenge.challengeDescription
-            itemView.findViewById<ImageView>(R.id.image_challenge).setImageResource(challenge.imageResourceId)
+            //itemView.findViewById<ImageView>(R.id.image_challenge).setImageResource(challenge.imageResourceId)
 
             /*
             // 이미지 설정
