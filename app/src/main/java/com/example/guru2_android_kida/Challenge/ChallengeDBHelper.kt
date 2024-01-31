@@ -92,18 +92,9 @@ class ChallengeDBHelper(context: Context) :
         }
 
         // 기존 행 업데이트
-        val rowsAffected = db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
-
-        // 업데이트된 행이 없으면, 해당 레코드가 존재하지 않는 것임. 새로운 레코드를 추가
-        if (rowsAffected == 0) {
-            contentValues.put("username", username)
-            contentValues.put("챌린지이름", challengeName)
-            db.insert("User_Challenge_Info", null, contentValues)
-        }
-
+        db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
         db.close()
     }
-
 
 
 

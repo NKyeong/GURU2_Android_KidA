@@ -20,8 +20,14 @@ class PersonalChallengeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_personal_challenge)
 
         // 인텐트에서 사용자 이름과 챌린지 이름 받기
-        val username = intent.getStringExtra("username") ?: "defaultUser"
-        val challengeName = intent.getStringExtra("challengeName") ?: "defaultChallenge"
+        val username = intent.getStringExtra("username")
+        val challengeName = intent.getStringExtra("challengeName")
+
+        // 사용자 이름이나 챌린지 이름이 전달되지 않았다면 활동 종료
+        if (username == null || challengeName == null) {
+            finish()
+            return
+        }
 
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
@@ -49,7 +55,7 @@ class PersonalChallengeActivity : AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
+            dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0)
 
             navigateToHomeScreen()
         }
