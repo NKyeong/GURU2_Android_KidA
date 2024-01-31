@@ -49,14 +49,10 @@ class PersonalChallengeActivity : AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            // 인텐트에서 사용자 이름과 챌린지 이름 가져오기
-            val username = intent.getStringExtra("username") ?: return@setOnClickListener
-            val challengeName = intent.getStringExtra("challengeName") ?: return@setOnClickListener
-
             dbHelper.saveChallengeData(username, challengeName, challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
+
             navigateToHomeScreen()
         }
-
     }
 
     // 도전과제 입력 필드 리스너 설정 함수
