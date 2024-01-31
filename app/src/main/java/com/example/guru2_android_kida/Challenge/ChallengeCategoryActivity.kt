@@ -56,9 +56,9 @@ class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListene
         while (cursor.moveToNext()) {
             val challengeName = cursor.getString(cursor.getColumnIndex("챌린지 이름"))
             val challengeDescription = cursor.getString(cursor.getColumnIndex("챌린지 내용"))
-            val imageResourceId = cursor.getInt(cursor.getColumnIndex("이미지 리소스 ID"))
+            val imageName = cursor.getString(cursor.getColumnIndex("이미지 이름"))
 
-            challengeList.add(ChallengeList(challengeName, challengeDescription, imageResourceId))
+            challengeList.add(ChallengeList(challengeName, challengeDescription, imageName))
         }
 
         cursor.close()
