@@ -91,20 +91,20 @@ class ChallengeDBHelper(context: Context) :
             put("stampsCollected", stampsCollected)
         }
 
-        // Check if the record exists
-        val cursor = db.rawQuery("SELECT * FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
-        if (cursor.moveToFirst()) {
-            // Record exists, update it
-            db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
-        } else {
-            // Record does not exist, insert a new one
+        // 기존 행 업데이트
+        val rowsAffected = db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
+
+        // 업데이트된 행이 없으면, 해당 레코드가 존재하지 않는 것임. 새로운 레코드를 추가
+        if (rowsAffected == 0) {
             contentValues.put("username", username)
             contentValues.put("챌린지이름", challengeName)
             db.insert("User_Challenge_Info", null, contentValues)
         }
-        cursor.close()
+
         db.close()
     }
+
+
 
 
     @SuppressLint("Range")
