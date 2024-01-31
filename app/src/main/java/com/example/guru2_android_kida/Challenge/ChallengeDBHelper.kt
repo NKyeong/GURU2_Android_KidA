@@ -81,20 +81,31 @@ class ChallengeDBHelper(context: Context) :
         db.close()
         return result != -1L
     }*/
-    // 도전과제 데이터 및 도장 개수 저장
-    fun saveChallengeData(username: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int) {
+    // 도전과제 데이터 저장 및 도장 개수 업데이트
+    fun saveChallengeData(username: String, challengeName: String, challenge1: String, challenge2: String, challenge3: String, stampsCollected: Int) {
         val db = this.writableDatabase
         val contentValues = ContentValues().apply {
-            put("username", username)
             put("challenge1", challenge1)
             put("challenge2", challenge2)
             put("challenge3", challenge3)
             put("stampsCollected", stampsCollected)
         }
 
-        db.insert("User_Challenge_Info", null, contentValues)
+        // Check if the record exists
+        val cursor = db.rawQuery("SELECT * FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
+        if (cursor.moveToFirst()) {
+            // Record exists, update it
+            db.update("User_Challenge_Info", contentValues, "username = ? AND 챌린지이름 = ?", arrayOf(username, challengeName))
+        } else {
+            // Record does not exist, insert a new one
+            contentValues.put("username", username)
+            contentValues.put("챌린지이름", challengeName)
+            db.insert("User_Challenge_Info", null, contentValues)
+        }
+        cursor.close()
         db.close()
     }
+
 
     @SuppressLint("Range")
     // User_Challenge_Info 테이블에 새로운 챌린지 정보 추가 또는 업데이트
@@ -187,4 +198,29 @@ class ChallengeDBHelper(context: Context) :
             db.close()
         }
     }
+    data class ChallengeInfo(
+        val challenge1: String,
+        val challenge2: String,
+        val challenge3: String,
+        val stampsCollected: Int
+    )
+    fun getChallengeInfo(username: String, challengeName: String): ChallengeInfo? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT challenge1, challenge2, challenge3, stampsCollected FROM User_Challenge_Info WHERE username = ? AND 챌린지이름 = ?",
+            arrayOf(username, challengeName)
+        )
+        var challengeInfo: ChallengeInfo? = null
+        if (cursor.moveToFirst()) {
+            val challenge1 = cursor.getString(cursor.getColumnIndex("challenge1"))
+            val challenge2 = cursor.getString(cursor.getColumnIndex("challenge2"))
+            val challenge3 = cursor.getString(cursor.getColumnIndex("challenge3"))
+            val stampsCollected = cursor.getInt(cursor.getColumnIndex("stampsCollected"))
+            challengeInfo = ChallengeInfo(challenge1, challenge2, challenge3, stampsCollected)
+        }
+        cursor.close()
+        db.close()
+        return challengeInfo
+    }
+
 }

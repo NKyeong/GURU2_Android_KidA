@@ -14,8 +14,14 @@ class ChallengeDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_detail)
 
-        //  "challengeName" 키로 전달된 데이터 (챌린지제목을 가져옵니다. 데이터 저장 시 사용해주세요.)
-        val challengeName = intent.getStringExtra("challengeName")
+        // 인텐트에서 사용자 이름과 챌린지 이름 받기
+        val username = intent.getStringExtra("username") ?: "defaultUser"
+        val challengeName = intent.getStringExtra("challengeName") ?: "defaultChallenge"
+
+        val dbHelper = ChallengeDBHelper(this)
+
+        // 도전과제 정보 조회
+        val challengeInfo = dbHelper.getChallengeInfo(username, challengeName)
 
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
@@ -24,33 +30,21 @@ class ChallengeDetailActivity : AppCompatActivity() {
         val tvChallenge2 = findViewById<TextView>(R.id.tvChallenge2)
         val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
 
+        // 정보 설정
+        tvChallenge1.text = challengeInfo.challenge1
+        tvChallenge2.text = challengeInfo.challenge2
+        tvChallenge3.text = challengeInfo.challenge3
+
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
             finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
         }
 
-        // 도장 개수 조회
-        val dbHelper = ChallengeDBHelper(this)
-        val stampsCollected = dbHelper.getStampsCollected("user1") // "user1"은 예시 사용자 이름입니다.
-
         // 도장판 초기화
-        initializeStampGrid(gridLayoutStamps, stampsCollected)
-
-        // 저장된 도전과제 표시 (Intent로 전달된 데이터 사용)
-        val challenge1 = intent.getStringExtra("challenge1")
-        val challenge2 = intent.getStringExtra("challenge2")
-        val challenge3 = intent.getStringExtra("challenval dbHelper\n = ChallengeDBHelper(this)\n" +
-                "        val stampsCollected = dbHelper.getStampsCollected(\"user1\") // \"user1\"은 예시 사용자 이름입니다.\n" +
-                "\n" +
-                "        // 도장판 초기화\n" +
-                "        initializeStampGrid(gridLayoutStamps, stampsCollected)ge3")
-        tvChallenge1.text = challenge1
-        tvChallenge2.text = challenge2
-        tvChallenge3.text = challenge3
-
+        initializeStampGrid(gridLayoutStamps, challengeInfo.stampsCollected)
     }
 
-    // 현재 진행 중인 도장판 초기화 함수
+    // 도장판 초기화 함수
     private fun initializeStampGrid(gridLayout: GridLayout, stampsCollected: Int) {
         val totalStamps = 5 * 6 // 5행 6열
 
@@ -58,10 +52,10 @@ class ChallengeDetailActivity : AppCompatActivity() {
             val stamp = ImageView(this)
             if (i < stampsCollected) {
                 // 채워진 도장 이미지 설정
-                stamp.setImageResource(R.drawable.indicator_dot_selected) // 채워진 도장 이미지 리소스
+                stamp.setImageResource(R.drawable.indicator_dot_selected)
             } else {
                 // 빈 도장 이미지 설정
-                stamp.setImageResource(R.drawable.indicator_dot_unselected) // 빈 도장 이미지 리소스
+                stamp.setImageResource(R.drawable.indicator_dot_unselected)
             }
             gridLayout.addView(stamp)
 

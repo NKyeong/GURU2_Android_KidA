@@ -8,12 +8,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.guru2_android_kida.Challenge.ChallengeList
 import com.example.guru2_android_kida.R
 
 interface ChallengeItemClickListener {
-    fun onChallengeStartClicked(challengeName: String)
+    fun onChallengeStartClicked(
+        challengeName: String,
+        position: Int,
+        challengeList: List<ChallengeList>
+    )
 }
 // ChallengeAdapter 클래스: RecyclerView의 데이터를 관리하고 화면에 표시하는 어댑터
 class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : RecyclerView.Adapter<ChallengeAdapter.ChallengeViewHolder>() {
