@@ -33,6 +33,7 @@
 
         <activity
             android:name=".MyPage.MyPageEditActivity"
+            android:label="MyPageEditActivity"
             android:exported="false" />
 
 
