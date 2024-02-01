@@ -70,7 +70,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
         binding.btnEdit.setOnClickListener {
-            val intent = Intent(requireContext(), MyPageEditFragment::class.java)
+            val intent = Intent(requireContext(), MyPageEditActivity::class.java)
             startActivity(intent)
         }
 
