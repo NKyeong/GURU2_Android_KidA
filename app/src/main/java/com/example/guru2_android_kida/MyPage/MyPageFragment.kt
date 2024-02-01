@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeAdapter
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
+import com.example.guru2_android_kida.HomeDetail.ChallengeNameAdapter
 import com.example.guru2_android_kida.Login.DBHelper
 import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
@@ -29,6 +30,10 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     private lateinit var userName: TextView
     //private lateinit var btnEdit: Button
     private lateinit var challengeView: RecyclerView
+    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추가
+
+    private val challengeNameLIst = mutableListOf<String>() // 챌린지 정보 리스트 추가
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +50,13 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         // ChallengeDBHelper 초기화
         challengeDBHelper = ChallengeDBHelper(requireContext())
 
+        // ChallengeNameAdapter 초기화
+        //challengeNameAdapter = ChallengeNameAdapter()
+
         // DB에서 특정 username 불러오기
-        /*val username = "desiredUsername"  // 사용자 이름을 임의로 지정
-        userName.text = challengeDBHelper.getUsername(username)  // 특정 사용자의 이름을 표시*/
+        // DBHelper 초기화
+        loginDBHelper = DBHelper(requireContext())
+        loginDBHelper.onCreate(loginDBHelper.writableDatabase)
 
         val username = "desiredUsername"
         userName.text = loginDBHelper.onLoginSuccess(username).toString()
@@ -55,25 +64,34 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         // 레벨 불러오기
 
 
-
-        // ChallengeDBHelper에서 진행중인 챌린지 불러오기
         // 사용자가 참여 중인 챌린지 정보 가져오기
-        val userChallenges = challengeDBHelper.getChallengesForUser(username)
-
-        // RecyclerView에 적용할 어댑터 생성
-        /*val adapter = ChallengeAdapter(userChallenges)
-
-        // RecyclerView 설정
-        challengeView.layoutManager = LinearLayoutManager(requireContext())
-        challengeView.adapter = adapter*/
+        showChallengeList()
 
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
         binding.btnEdit.setOnClickListener {
-            val intent = Intent(requireContext(), MyPageEditActivity::class.java)
+            val intent = Intent(requireContext(), MyPageEditFragment::class.java)
             startActivity(intent)
         }
 
         return view
+    }
+
+    private fun showChallengeList() {
+        // 현재 로그인한 사용자의 이름을 가져오는 메서드 (적절한 메서드로 대체)
+
+        val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
+
+        // ChallengeNameAdapter를 사용하여 사용자의 챌린지 목록을 가져와 화면에 표시
+        challengeNameAdapter.setChallengeListForUser(currentUsername)
+
+        // 텍스트 뷰에 챌린지이름을 표시
+        val challengeNameTextView = view?.findViewById<TextView>(R.id.challengeNameTextView)
+        if (challengeNameAdapter.itemCount == 0) {
+            challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
+        } else {
+            challengeNameTextView?.text = challengeNameLIst.joinToString("\n")
+        }
     }
 }
