@@ -36,6 +36,9 @@
             android:label="MyPageEditActivity"
             android:exported="false" />
 
+        <activity android:name="com.example.guru2_android_kida.MyPage.MyPageFragment"
+            tools:ignore="Instantiatable" />
+
 
         <activity
             android:name=".IntroActivity"

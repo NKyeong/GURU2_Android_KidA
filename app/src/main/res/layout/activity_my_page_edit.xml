@@ -6,29 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/challenge1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="챌린지1"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="44dp"
-        tools:ignore="MissingConstraints" />
-
-    <CheckBox
-        android:id="@+id/challenge2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="챌린지2"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="108dp"
-        tools:ignore="MissingConstraints" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/challengeEditView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnRemove"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:text="삭제" />
 
 </LinearLayout>

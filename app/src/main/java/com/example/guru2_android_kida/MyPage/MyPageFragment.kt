@@ -97,8 +97,6 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page), ChallengeNameAdapter
         // 내부 리스트를 새로운 목록으로 업데이트
         challengeNameLIst.clear()
         challengeNameLIst.addAll(newChallengeList)
-        // RecyclerView 갱신
-        //notifyDataSetChanged()
     }
 
     override fun onChallengeClick(challengeName: String) {
