@@ -25,6 +25,8 @@ import java.util.Locale
 // 홈 액티비티 입니다.
 // 캘린더와 챌린지 리스트가 뜨는 파일이며, 위의 HomeActivity는 각각의 플래그먼트를 띄우기 위한 메인화면으로 보면 됨.
 class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnChallengeClickListener {
+    // 클래스 레벨 변수로 선언
+    private var selectedDate: String = getCurrentFormattedDate()
     // 데이터베이스 헬퍼 인스턴스
     private lateinit var dbHelper: TodoDBHelper
     private lateinit var challengeDBHelper: ChallengeDBHelper // ChallengeDBHelper 추가
@@ -68,7 +70,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
         // Adapter를 초기화할 때 빈 리스트로 설정
 
         //todolist어댑터 설정
-        toDoAdapter = ToDoAdapter(todoList)
+        toDoAdapter = ToDoAdapter(dbHelper, selectedDate, todoList)
         challengeNameAdapter = ChallengeNameAdapter(challengeNameLIst, challengeDBHelper, this) // ChallengeNameAdapter 초기화 추가
 
         // 리사이클러뷰 어댑터 설정
@@ -85,7 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
 
         // CalendarView의 날짜 변경 이벤트 처리
         calendarView.setOnDateChangeListener { View, year, month, dayOfMonth ->
-            val selectedDate = getFormattedDate(year, month, dayOfMonth)
+            selectedDate = getFormattedDate(year, month, dayOfMonth)
             showTodoList(selectedDate)
 
             // todoListCache에서 해당 날짜의 할 일 목록 가져오기
@@ -93,7 +95,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
 
             if (cachedTodoList != null) {
                 // 캐시된 데이터가 있으면 그대로 화면 갱신
-                updateUI(cachedTodoList)
+                updateUI(selectedDate,cachedTodoList)
             } else {
                 // 캐시된 데이터가 없으면 데이터베이스에서 가져와서 화면 갱신
                 showTodoList(selectedDate)
@@ -145,12 +147,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
         toDoAdapter.addItem(newTodoItem)
 
         // 데이터베이스에도 추가
-        dbHelper.insertTodoItem(getCurrentFormattedDate(), newTodoItem)
+        dbHelper.insertTodoItem(selectedDate, newTodoItem)
 
         // 해당 날짜의 할 일 목록 캐시 갱신
-        val currentDate = getCurrentFormattedDate()
-        val updatedTodoList = dbHelper.getTodosForDate(currentDate)
-        todoListCache[currentDate] = updatedTodoList
+        val updatedTodoList = dbHelper.getTodosForDate(selectedDate)
+        todoListCache[selectedDate] = updatedTodoList
 
     }
 
@@ -175,13 +176,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
         todoListCache[selectedDate] = todoListFromDB
 
         // 어댑터의 내부 리스트를 업데이트하고 RecyclerView 갱신
-        toDoAdapter.setToDoList(todoListFromDB)
+        updateUI(selectedDate, todoListFromDB)
 
 
     }
     // 기존에 사용하던 updateUI 함수
-    private fun updateUI(newList: List<ToDoItem>) {
+    private fun updateUI(selectedDate: String, newList: List<ToDoItem>) {
         toDoAdapter.updateList(newList)
+        // 해당 날짜의 할 일 목록 캐시 갱신
+        todoListCache[selectedDate] = newList
     }
 
     // 날짜를 "yyyy-MM-dd" 형식으로 포맷하는 유틸리티 함수

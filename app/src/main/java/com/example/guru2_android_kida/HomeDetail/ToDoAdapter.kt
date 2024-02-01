@@ -11,7 +11,7 @@ import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.HomeToDoListBinding
 
 // 여기서 todoList는 dataset
-class ToDoAdapter(private val todoList: MutableList<ToDoItem>, ) : RecyclerView.Adapter<ToDoAdapter.ToDoItemViewHolder>() {
+class ToDoAdapter(private val dbHelper: TodoDBHelper, private val selectedDate: String, private val todoList: MutableList<ToDoItem>, ) : RecyclerView.Adapter<ToDoAdapter.ToDoItemViewHolder>() {
 
 
 
@@ -35,6 +35,8 @@ class ToDoAdapter(private val todoList: MutableList<ToDoItem>, ) : RecyclerView.
         holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
             todoItem.isChecked = isChecked
             holder.editText.isEnabled = !isChecked
+            // 변경된 상태를 DB에 반영
+            dbHelper.updateTodoItem(selectedDate, todoItem)
         }
 
         // 에디트텍스트 포커스 이벤트 처리
@@ -42,6 +44,8 @@ class ToDoAdapter(private val todoList: MutableList<ToDoItem>, ) : RecyclerView.
             if (!hasFocus) {
                 // 에디트텍스트의 포커스가 사라질 때 할 일 내용을 모델에 업데이트
                 todoItem.todoText = holder.editText.text.toString()
+                // 변경된 상태를 DB에 반영
+                dbHelper.updateTodoItem(selectedDate, todoItem)
             }
         }
 

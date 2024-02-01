@@ -67,4 +67,16 @@ class TodoDBHelper(context: Context): SQLiteOpenHelper(
         db.close()
         return todoList
     }
+    // 할 일 업데이트 메서드
+    fun updateTodoItem(date: String, todo: ToDoItem) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_DATE, date)
+        values.put(COLUMN_TODO, todo.todoText)
+        values.put(COLUMN_CHECKED, if (todo.isChecked) 1 else 0) // 체크 여부 저장
+        val whereClause = "$COLUMN_DATE = ? AND $COLUMN_TODO = ?"
+        val whereArgs = arrayOf(date, todo.todoText)
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+    }
 }
