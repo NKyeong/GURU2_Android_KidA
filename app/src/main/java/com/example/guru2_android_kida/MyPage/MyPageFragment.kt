@@ -41,9 +41,10 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     ): View? {
 
         val view = binding.root
-
-        // TextView 및 Button 초기화
         userName = binding.userName
+
+        /*// TextView 및 Button 초기화
+
         //btnEdit = binding.btnEdit
         challengeView = binding.challengeView
 
@@ -56,16 +57,15 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         // DB에서 특정 username 불러오기
         // DBHelper 초기화
         loginDBHelper = DBHelper(requireContext())
-        loginDBHelper.onCreate(loginDBHelper.writableDatabase)
+        loginDBHelper.onCreate(loginDBHelper.writableDatabase)*/
 
-        val username = "desiredUsername"
-        userName.text = loginDBHelper.onLoginSuccess(username).toString()
 
         // 레벨 불러오기
 
 
         // 사용자가 참여 중인 챌린지 정보 가져오기
-        showChallengeList()
+        // SharedPreferences에서 값을 가져와서 TextView에 설정
+        setUserNameInView()
 
 
         // 수정하는 페이지(activity_my_page_edit)로 이동
@@ -77,21 +77,14 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         return view
     }
 
-    private fun showChallengeList() {
-        // 현재 로그인한 사용자의 이름을 가져오는 메서드 (적절한 메서드로 대체)
-
-        val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-        val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
-
-        // ChallengeNameAdapter를 사용하여 사용자의 챌린지 목록을 가져와 화면에 표시
-        challengeNameAdapter.setChallengeListForUser(currentUsername)
-
-        // 텍스트 뷰에 챌린지이름을 표시
-        val challengeNameTextView = view?.findViewById<TextView>(R.id.challengeNameTextView)
-        if (challengeNameAdapter.itemCount == 0) {
-            challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
-        } else {
-            challengeNameTextView?.text = challengeNameLIst.joinToString("\n")
-        }
+    //// MyPageFragment 내에서 호출되는 함수로 TextView에 값 설정하기
+    private fun setUserNameInView() {
+        val username = getCurrentUsername()
+        userName.text = username
+    }
+    //SharedPreferences 값 가져오기
+    private fun getCurrentUsername(): String {
+        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("current_username", "") ?: ""
     }
 }

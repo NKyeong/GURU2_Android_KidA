@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="username"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
