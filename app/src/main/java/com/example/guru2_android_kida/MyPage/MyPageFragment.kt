@@ -1,5 +1,6 @@
 package com.example.guru2_android_kida.MyPage
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeAdapter
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
+import com.example.guru2_android_kida.Login.DBHelper
 import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
 
@@ -23,6 +25,7 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
     }
 
     private lateinit var challengeDBHelper: ChallengeDBHelper
+    private lateinit var loginDBHelper: DBHelper
     private lateinit var userName: TextView
     //private lateinit var btnEdit: Button
     private lateinit var challengeView: RecyclerView
@@ -43,9 +46,11 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page) {
         challengeDBHelper = ChallengeDBHelper(requireContext())
 
         // DB에서 특정 username 불러오기
-        val username = "desiredUsername"  // 사용자 이름을 임의로 지정
-        userName.text = challengeDBHelper.getUsername(username)  // 특정 사용자의 이름을 표시
+        /*val username = "desiredUsername"  // 사용자 이름을 임의로 지정
+        userName.text = challengeDBHelper.getUsername(username)  // 특정 사용자의 이름을 표시*/
 
+        val username = "desiredUsername"
+        userName.text = loginDBHelper.onLoginSuccess(username).toString()
 
         // 레벨 불러오기
 
