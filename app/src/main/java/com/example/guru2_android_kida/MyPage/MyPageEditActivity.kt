@@ -26,7 +26,6 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
     private lateinit var binding: ActivityMyPageEditBinding
     private lateinit var ChallengeNamedbHelper: ChallengeDBHelper
     private lateinit var challengeEditView: RecyclerView
-    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추가
     private lateinit var MyPageAdapter: MyPageAdapter
 
     private val challengeNameLIst = mutableListOf<String>()
@@ -42,11 +41,6 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
 
         // TextView 및 Button 초기화
         challengeEditView = binding.challengeEditView
-
-        // ChallengeNameAdapter를 적용하도록 추가
-        /*challengeNameAdapter = ChallengeNameAdapter(challengeNameLIst, ChallengeNamedbHelper, this)
-        challengeEditView.layoutManager = LinearLayoutManager(this)
-        challengeEditView.adapter = challengeNameAdapter*/
 
         // MyPageAdapter를 적용하도록 추가
         MyPageAdapter = MyPageAdapter(challengeNameLIst, ChallengeNamedbHelper, this)
