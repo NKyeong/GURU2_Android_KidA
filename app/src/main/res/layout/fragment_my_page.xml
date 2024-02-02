@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
     <!-- 메뉴바에서 마이페이지를 클릭했을 때 실행되는 파일 입니다. !-->
 
@@ -21,52 +20,87 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="My Page"
-                    android:lineSpacingExtra="-11sp"
-                    android:gravity="top"
+                    android:paddingBottom="5dp"
 
                     android:textSize="35sp"
                     android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/userName"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="UserName"
-                    android:lineSpacingExtra="2sp"
-                    android:translationY="-1.04sp"
-                    android:layout_gravity="top"
-                    android:padding="10dp"
+                    android:layout_height="wrap_content">
 
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="level 0"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:lineSpacingExtra="2sp"
-                    android:translationY="-0.97sp"
-                    android:gravity="top"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
-                    android:textSize="15sp"/>
+                            <TextView
+                                android:id="@+id/userName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="UserName"
+
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/level"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Level 0"
+                                    android:paddingRight="20dp"
+
+                                    android:textSize="15sp"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Stemp 0"
+
+                                    android:textSize="15sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:padding="10dp"
+                        android:src="@drawable/my_page_face" />
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,79 +133,85 @@
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Menu"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="내 정보 설정"
-                android:gravity="start"
-                android:textSize="17dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"
-                android:drawableLeft="@drawable/pen"
-                android:drawablePadding="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Menu"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="알림 설정"
-                android:gravity="start"
-                android:textSize="17dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"
-                android:drawableLeft="@drawable/nobell"
-                android:drawablePadding="5dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="내 정보 설정"
+                    android:gravity="start"
+                    android:textSize="17dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:translationZ="3dp"
+                    android:stateListAnimator="@null"
+                    android:drawableLeft="@drawable/pen"
+                    android:drawablePadding="5dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="공지사항"
-                android:gravity="start"
-                android:textSize="17dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"
-                android:drawableLeft="@drawable/script"
-                android:drawablePadding="5dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="알림 설정"
+                    android:gravity="start"
+                    android:textSize="17dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:translationZ="3dp"
+                    android:stateListAnimator="@null"
+                    android:drawableLeft="@drawable/nobell"
+                    android:drawablePadding="5dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="계정 보안"
-                android:gravity="start"
-                android:textSize="17dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"
-                android:drawableLeft="@drawable/protect_window"
-                android:drawablePadding="5dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="공지사항"
+                    android:gravity="start"
+                    android:textSize="17dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:translationZ="3dp"
+                    android:stateListAnimator="@null"
+                    android:drawableLeft="@drawable/script"
+                    android:drawablePadding="5dp"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="문의사항"
-                android:gravity="start"
-                android:textSize="17dp"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"
-                android:drawableLeft="@drawable/headphone"
-                android:drawablePadding="5dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="계정 보안"
+                    android:gravity="start"
+                    android:textSize="17dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:translationZ="3dp"
+                    android:stateListAnimator="@null"
+                    android:drawableLeft="@drawable/protect_window"
+                    android:drawablePadding="5dp"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="문의사항"
+                    android:gravity="start"
+                    android:textSize="17dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:translationZ="3dp"
+                    android:stateListAnimator="@null"
+                    android:drawableLeft="@drawable/headphone"
+                    android:drawablePadding="5dp"/>
 
+            </LinearLayout>
 
         </LinearLayout>
 
