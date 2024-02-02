@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import androidx.fragment.app.Fragment
@@ -29,12 +30,12 @@ class ChallengeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lifeBtn: Button = view.findViewById(R.id.lifeBtn)
-        val foodBtn: Button = view.findViewById(R.id.foodBtn)
-        val exerciseBtn: Button = view.findViewById(R.id.exerciseBtn)
-        val studyBtn: Button = view.findViewById(R.id.studyBtn)
-        val hobbyBtn: Button = view.findViewById(R.id.hobbyBtn)
-        val extraBtn: Button = view.findViewById(R.id.extraBtn)
+        val lifeBtn: ImageButton = view.findViewById(R.id.lifeBtn)
+        val foodBtn: ImageButton = view.findViewById(R.id.foodBtn)
+        val exerciseBtn: ImageButton = view.findViewById(R.id.exerciseBtn)
+        val studyBtn: ImageButton = view.findViewById(R.id.studyBtn)
+        val hobbyBtn: ImageButton = view.findViewById(R.id.hobbyBtn)
+        val extraBtn: ImageButton = view.findViewById(R.id.extraBtn)
 
         // 각 버튼에 대한 클릭 이벤트 처리
         lifeBtn.setOnClickListener { navigateToCategory("생활습관") }
