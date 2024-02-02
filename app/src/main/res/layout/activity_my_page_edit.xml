@@ -4,17 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Challenges"
+
+        android:textSize="30dp"
+        android:textStyle="bold"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/challengeEditView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btnRemove"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="삭제" />
+        android:text="챌린지 삭제"
+        android:layout_gravity="end"/>
 
 </LinearLayout>

@@ -4,33 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <!-- 메뉴바에서 마이페이지를 클릭했을 때 실행되는 파일 입니다. !-->
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/level"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="level 0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="챌린지 수정" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/challengeView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Page"
+                    android:lineSpacingExtra="-11sp"
+                    android:gravity="top"
+
+                    android:textSize="35sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:text="UserName"
+                    android:lineSpacingExtra="2sp"
+                    android:translationY="-1.04sp"
+                    android:layout_gravity="top"
+                    android:padding="10dp"
+
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="level 0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:lineSpacingExtra="2sp"
+                    android:translationY="-0.97sp"
+                    android:gravity="top"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:lineSpacingExtra="5sp"
+                    android:paddingTop="10dp"
+                    android:text="My Challenges"
+                    android:textSize="20sp"
+
+                    android:textStyle="bold"
+                    android:translationY="-2.54sp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/challengeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"/>
+
+                <Button
+                    android:id="@+id/btnEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+
+                    android:text="챌린지 수정"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Menu"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="내 정보 설정"
+                    android:padding="5dp"
+
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="알림 설정"
+                    android:padding="5dp"
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="공지사항"
+                    android:padding="5dp"
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="계정 보안"
+                    android:padding="5dp"
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="문의사항"
+                    android:padding="5dp"
+                    android:textSize="17dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
