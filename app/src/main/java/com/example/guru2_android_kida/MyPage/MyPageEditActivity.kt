@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -15,16 +16,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
 import com.example.guru2_android_kida.HomeDetail.ChallengeNameAdapter
+import com.example.guru2_android_kida.HomeDetail.MyPageAdapter
 import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.ActivityMyPageEditBinding
 import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
 
-class MyPageEditActivity: AppCompatActivity(), ChallengeNameAdapter.OnChallengeClickListener {
+class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickListener {
 
     private lateinit var binding: ActivityMyPageEditBinding
     private lateinit var ChallengeNamedbHelper: ChallengeDBHelper
     private lateinit var challengeEditView: RecyclerView
     private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추가
+    private lateinit var MyPageAdapter: MyPageAdapter
 
     private val challengeNameLIst = mutableListOf<String>()
 
@@ -41,9 +44,14 @@ class MyPageEditActivity: AppCompatActivity(), ChallengeNameAdapter.OnChallengeC
         challengeEditView = binding.challengeEditView
 
         // ChallengeNameAdapter를 적용하도록 추가
-        challengeNameAdapter = ChallengeNameAdapter(challengeNameLIst, ChallengeNamedbHelper, this)
+        /*challengeNameAdapter = ChallengeNameAdapter(challengeNameLIst, ChallengeNamedbHelper, this)
         challengeEditView.layoutManager = LinearLayoutManager(this)
-        challengeEditView.adapter = challengeNameAdapter
+        challengeEditView.adapter = challengeNameAdapter*/
+
+        // MyPageAdapter를 적용하도록 추가
+        MyPageAdapter = MyPageAdapter(challengeNameLIst, ChallengeNamedbHelper, this)
+        challengeEditView.layoutManager = LinearLayoutManager(this)
+        challengeEditView.adapter = MyPageAdapter
 
         // 사용자가 참여 중인 챌린지 정보 가져오기
         showChallengeList()
@@ -68,12 +76,15 @@ class MyPageEditActivity: AppCompatActivity(), ChallengeNameAdapter.OnChallengeC
         setChallengeList(userChallenges)
 
         // 텍스트 뷰에 챌린지이름을 표시
-        val challengeNameTextView = findViewById<TextView>(R.id.challengeNameTextView)
+        val challengeNameTextView = findViewById<TextView>(R.id.challengeEditTextView)
         if (challengeNameLIst.isEmpty()) {
             challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
         } else {
             challengeNameTextView?.text = challengeNameLIst.joinToString("\n")
         }
+
+        val challengeNameCheckBox = findViewById<CheckBox>(R.id.challengeNameCheckBox)
+        challengeNameCheckBox?.isChecked = challengeNameLIst.isEmpty()
     }
 
     fun setChallengeList(newChallengeList: List<String>) {
@@ -81,7 +92,7 @@ class MyPageEditActivity: AppCompatActivity(), ChallengeNameAdapter.OnChallengeC
         challengeNameLIst.clear()
         challengeNameLIst.addAll(newChallengeList)
         // RecyclerView 갱신
-        challengeNameAdapter.notifyDataSetChanged()
+        MyPageAdapter.notifyDataSetChanged()
     }
 
     override fun onChallengeClick(challengeName: String) {
