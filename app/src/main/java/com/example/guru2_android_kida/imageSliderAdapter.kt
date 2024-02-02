@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderViewHolder>() {
 
     private val images = intArrayOf(
-        R.drawable.exercise_stairs,
-        R.drawable.study_coding,
-        R.drawable.life_diary,
-        R.drawable.food_fasting,
-        R.drawable.hobby_croquis
+        R.drawable.image_exercise_morning_walk,
+        R.drawable.image_extra_transcription,
+        R.drawable.image_hobby_baking,
+        R.drawable.image_life_sleep,
+        R.drawable.image_study_english_words
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSliderViewHolder {
