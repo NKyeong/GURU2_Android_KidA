@@ -38,9 +38,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="21dp"
                 android:elevation="10dp"
-                android:focusedMonthDateColor="#FAD2D2"
-                android:foregroundTint="#FFFFFF"
-                android:selectedWeekBackgroundColor="#FF9800"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +61,7 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="41dp"
+                android:layout_marginLeft="32dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="11dp" />
             <View
@@ -119,7 +116,7 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="41dp"
+                android:layout_marginLeft="28dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="11dp" />
 
