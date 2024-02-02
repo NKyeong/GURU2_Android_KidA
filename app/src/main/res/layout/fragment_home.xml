@@ -16,12 +16,31 @@
             android:layout_height="0dp"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/home"
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="41dp"
+                android:layout_marginTop="42dp"
+                android:gravity="top"
+                android:lineHeight="24sp"
+                android:lineSpacingExtra="-11sp"
+                android:text="Home"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
             <CalendarView
                 android:id="@+id/calendarView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="344dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="21dp"
+                android:elevation="10dp"
+                android:focusedMonthDateColor="#FAD2D2"
+                android:foregroundTint="#FFFFFF"
+                android:selectedWeekBackgroundColor="#FF9800"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,49 +49,66 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="35dp"
+                android:gravity="top"
+                android:lineSpacingExtra="3sp"
                 android:text="Today's Challenge"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.154"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.691" />
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:translationY="-1.36sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/challengeRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="To Do List"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.154"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.691" />
-
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="41dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="11dp" />
             <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/addButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="추가" />
-        </LinearLayout>
-        <LinearLayout
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="35dp"
+                    android:gravity="top"
+                    android:lineSpacingExtra="3sp"
+                    android:text="To Do List"
+                    android:textColor="@color/black"
+                    android:textSize="26sp"
+                    android:translationY="-1.36sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:text="추가"
+                    android:translationY="-1.36sp" />
+            </LinearLayout>
+
+            <LinearLayout
             android:id="@+id/todoContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,9 +116,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="41dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="11dp" />
 
         </LinearLayout>
         </LinearLayout>

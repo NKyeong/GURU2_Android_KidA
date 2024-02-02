@@ -1,90 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="100dp"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
-    android:layout_gravity="center">
-
+    android:backgroundTint="#C9C9C9"
+    tools:layout_editor_absoluteX="-8dp"
+    tools:layout_editor_absoluteY="-60dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="닉네임"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editRegistName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62"
-        tools:layout_editor_absoluteX="73dp" />
-
-    <EditText
-        android:id="@+id/editRegistName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="닉네임을 입력하세요."
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="73dp" />
+        android:id="@+id/title"
+        android:layout_width="227dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="88dp"
+        android:gravity="top"
+        android:lineSpacingExtra="4sp"
+        android:text="Welcome to Kida!"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:translationY="-1.82sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editRegistPw"
-        app:layout_constraintTop_toBottomOf="@+id/editRegistName"
-        tools:layout_editor_absoluteX="79dp" />
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="54dp"
+        android:text="UserName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
-    <EditText
-        android:id="@+id/editRegistPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="비밀번호를 입력하세요."
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:layout_editor_absoluteX="79dp" />
+    <RelativeLayout
+        android:id="@+id/primary_but"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/primary_but"
+        android:backgroundTint="#F1F1F1"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description">
+
+        <EditText
+            android:id="@+id/editRegistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:ems="10"
+            android:hint="Enter your Username"
+            android:inputType="text" />
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="비밀번호 재확인"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editRegistRePw"
-        app:layout_constraintTop_toBottomOf="@+id/editRegistPw"
-        tools:layout_editor_absoluteX="83dp" />
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="124dp"
+        android:gravity="top"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="3sp"
+        android:text="KidA가 처음이시라면 회원가입을 진행해 주세요!"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:translationY="-1.73sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editRegistRePw"
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="비밀번호를 재입력하세요."
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/btnInputRegist"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="78dp" />
+        android:layout_marginStart="41dp"
+        android:text="PassWord"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <RelativeLayout
+        android:id="@+id/primary_but1"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/primary_but"
+        android:backgroundTint="#F1F1F1"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primary_but">
+
+        <EditText
+            android:id="@+id/editRegistPw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:ems="10"
+            android:hint="Enter your Password"
+            android:inputType="text" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:text="Re Enter PassWord"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.22000003" />
+
+    <RelativeLayout
+        android:id="@+id/primary_but2"
+        android:layout_width="345dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="259dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/primary_but"
+        android:backgroundTint="#F1F1F1"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description">
+
+        <EditText
+            android:id="@+id/editRegistRePw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:ems="10"
+            android:hint="Enter your Re-Password"
+            android:inputType="text" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btnInputRegist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="완료"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegistRePw"
-        tools:layout_editor_absoluteX="88dp" />
+        android:layout_marginTop="50dp"
+        android:background="@drawable/primary_but"
+        android:text="회원가입 완료"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primary_but2" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
