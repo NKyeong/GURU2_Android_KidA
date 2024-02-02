@@ -66,8 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,55 +99,79 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Menu"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Menu"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내 정보 설정"
+                android:gravity="start"
+                android:textSize="17dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:translationZ="2dp"
+                android:stateListAnimator="@null"
+                android:drawableLeft="@drawable/pen"
+                android:drawablePadding="5dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="내 정보 설정"
-                    android:padding="5dp"
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="알림 설정"
+                android:gravity="start"
+                android:textSize="17dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:translationZ="2dp"
+                android:stateListAnimator="@null"
+                android:drawableLeft="@drawable/nobell"
+                android:drawablePadding="5dp"/>
 
-                    android:textSize="17dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="공지사항"
+                android:gravity="start"
+                android:textSize="17dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:translationZ="2dp"
+                android:stateListAnimator="@null"
+                android:drawableLeft="@drawable/script"
+                android:drawablePadding="5dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="알림 설정"
-                    android:padding="5dp"
-                    android:textSize="17dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="계정 보안"
+                android:gravity="start"
+                android:textSize="17dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:translationZ="2dp"
+                android:stateListAnimator="@null"
+                android:drawableLeft="@drawable/protect_window"
+                android:drawablePadding="5dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="공지사항"
-                    android:padding="5dp"
-                    android:textSize="17dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="문의사항"
+                android:gravity="start"
+                android:textSize="17dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:translationZ="2dp"
+                android:stateListAnimator="@null"
+                android:drawableLeft="@drawable/headphone"
+                android:drawablePadding="5dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="계정 보안"
-                    android:padding="5dp"
-                    android:textSize="17dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="문의사항"
-                    android:padding="5dp"
-                    android:textSize="17dp"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
