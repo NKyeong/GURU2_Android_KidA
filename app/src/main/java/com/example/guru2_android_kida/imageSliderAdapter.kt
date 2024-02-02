@@ -16,16 +16,8 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
         R.drawable.image_study_english_words
     )
 
-    class ImageSliderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val popularImageView: ImageView = itemView.findViewById(R.id.popularViewPager)
-        val popularIndicatorDot: ImageView = itemView.findViewById(R.id.popularIndicatorDot)
-
-        val myChallengeImageView: ImageView = itemView.findViewById(R.id.myChallengeViewPager)
-        val myChallengeIndicatorDot: ImageView = itemView.findViewById(R.id.myChallengeIndicatorDot)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSliderViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_challenge_explaination, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image_slider, parent, false)
         return ImageSliderViewHolder(view)
     }
 
@@ -38,4 +30,11 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
         return images.size
     }
 
+    class ImageSliderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val popularImageView: ImageView = itemView.findViewById(R.id.popularViewPager)
+        val popularIndicatorDot: ImageView = itemView.findViewById(R.id.popularIndicatorDot)
+
+        val myChallengeImageView: ImageView = itemView.findViewById(R.id.myChallengeViewPager)
+        val myChallengeIndicatorDot: ImageView = itemView.findViewById(R.id.myChallengeIndicatorDot)
+    }
 }
