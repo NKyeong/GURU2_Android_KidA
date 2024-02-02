@@ -77,6 +77,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_life"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="생활습관" />
 
                 <ImageButton
@@ -86,6 +87,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_food"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="식습관" />
 
                 <ImageButton
@@ -95,6 +97,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_exercise"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="운동" />
             </LinearLayout>
 
@@ -112,6 +115,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_study"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="공부" />
 
                 <ImageButton
@@ -121,6 +125,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_hobby"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="취미생활" />
 
                 <ImageButton
@@ -130,6 +135,7 @@
                     android:padding="0dp"
                     android:src="@drawable/button_extra"
                     android:layout_weight="1"
+                    android:onClick="buttonClicked"
                     android:text="기타" />
             </LinearLayout>
 
