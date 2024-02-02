@@ -149,15 +149,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="내 정보 설정"
-                    android:gravity="start"
-                    android:textSize="17dp"
                     android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:translationZ="3dp"
-                    android:stateListAnimator="@null"
                     android:drawableLeft="@drawable/pen"
-                    android:drawablePadding="5dp"/>
+                    android:drawablePadding="5dp"
+                    android:gravity="start"
+                    android:stateListAnimator="@null"
+                    android:text="내 정보 설정"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:translationZ="3dp" />
 
                 <Button
                     android:layout_width="match_parent"

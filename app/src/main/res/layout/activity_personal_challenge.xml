@@ -63,8 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutChallenges"
-        android:text="열심히 채워볼까요?"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="10dp"
+        android:text="열심히 채워볼까요?" />
 
     <!-- "챌린지 참여하기" 버튼 -->
 
@@ -74,20 +74,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvStampMessage"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="290dp"
-        android:layout_marginEnd="19dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginEnd="27dp"
         android:text="챌린지 참여하기" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="395dp"
-        android:layout_height="316dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="50dp"
         app:srcCompat="@mipmap/stamp_file_foreground" />
 </RelativeLayout>

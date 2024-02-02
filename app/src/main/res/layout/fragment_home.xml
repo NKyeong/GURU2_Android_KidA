@@ -102,6 +102,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:text="추가"
+                    android:textSize="16sp"
                     android:translationY="-1.36sp" />
             </LinearLayout>
 
