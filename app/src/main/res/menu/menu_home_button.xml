@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 메뉴 하단에 아이콘 추가 필요 !-->
     <item
+        android:icon="@drawable/home_btn"
         android:id="@+id/fragment_home"
         android:title="홈" />
     <item
+        android:icon="@drawable/home_challenge_btn"
         android:id="@+id/fragment_challenge"
         android:title="챌린지" />
     <item
+        android:icon="@drawable/home_ranking_btn"
         android:id="@+id/fragment_ranking"
         android:title="랭킹" />
     <item
+        android:icon="@drawable/home_my_page_btn"
         android:id="@+id/fragment_my_page"
         android:title="마이페이지" />
 </menu>
