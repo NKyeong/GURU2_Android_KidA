@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -65,27 +66,26 @@
         android:text="열심히 채워볼까요?"
         android:layout_marginTop="16dp" />
 
-    <!-- 임시 도장판 표시 -->
-    <GridLayout
-        android:id="@+id/gridLayoutStamps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvStampMessage"
-        android:columnCount="6"
-        android:rowCount="5"
-        android:layout_marginTop="8dp">
-
-    <!-- 도장 아이템 추가 (프로그래밍적으로 추가될 예정) -->
-
-</GridLayout>
-
     <!-- "챌린지 참여하기" 버튼 -->
+
     <Button
         android:id="@+id/btnJoinChallenge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvStampMessage"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/gridLayoutStamps"
-        android:text="챌린지 참여하기"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="19dp"
+        android:text="챌린지 참여하기" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="389dp"
+        android:layout_height="168dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="114dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
 </RelativeLayout>

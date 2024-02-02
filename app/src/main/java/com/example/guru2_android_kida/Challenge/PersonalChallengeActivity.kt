@@ -26,7 +26,7 @@ class PersonalChallengeActivity :AppCompatActivity() {
         val etChallenge1 = findViewById<EditText>(R.id.etChallenge1)
         val etChallenge2 = findViewById<EditText>(R.id.etChallenge2)
         val etChallenge3 = findViewById<EditText>(R.id.etChallenge3)
-        val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
+        //val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
@@ -37,7 +37,7 @@ class PersonalChallengeActivity :AppCompatActivity() {
         setupChallengeInputListeners(etChallenge1, etChallenge2, etChallenge3, btnJoinChallenge)
 
         // 도장판 초기화
-        initializeStampGrid(gridLayoutStamps)
+        //initializeStampGrid(gridLayoutStamps)
 
         //홈화면으로 이동
         fun navigateToHomeScreen() {

@@ -19,7 +19,7 @@ class ChallengeDetailActivity : AppCompatActivity() {
 
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
-        val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
+        //val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
         val tvChallenge1 = findViewById<TextView>(R.id.tvChallenge1)
         val tvChallenge2 = findViewById<TextView>(R.id.tvChallenge2)
         val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
@@ -34,7 +34,7 @@ class ChallengeDetailActivity : AppCompatActivity() {
         val stampsCollected = dbHelper.getStampsCollected("user1") // "user1"은 예시 사용자 이름입니다.
 
         // 도장판 초기화
-        initializeStampGrid(gridLayoutStamps, stampsCollected)
+        //initializeStampGrid(gridLayoutStamps, stampsCollected)
 
         // 저장된 도전과제 표시 (Intent로 전달된 데이터 사용)
         val challenge1 = intent.getStringExtra("challenge1")
