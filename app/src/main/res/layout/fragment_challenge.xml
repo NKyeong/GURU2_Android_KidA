@@ -59,8 +59,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
             android:orientation="vertical"
             >
 
@@ -74,6 +74,7 @@
                     android:id="@+id/lifeBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_life"
                     android:layout_weight="1"
                     android:text="생활습관" />
@@ -82,6 +83,7 @@
                     android:id="@+id/foodBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_food"
                     android:layout_weight="1"
                     android:text="식습관" />
@@ -90,6 +92,7 @@
                     android:id="@+id/exerciseBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_exercise"
                     android:layout_weight="1"
                     android:text="운동" />
@@ -98,6 +101,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -105,6 +109,7 @@
                     android:id="@+id/studyBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_study"
                     android:layout_weight="1"
                     android:text="공부" />
@@ -113,6 +118,7 @@
                     android:id="@+id/hobbyBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_hobby"
                     android:layout_weight="1"
                     android:text="취미생활" />
@@ -121,6 +127,7 @@
                     android:id="@+id/extraBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="0dp"
                     android:src="@drawable/button_extra"
                     android:layout_weight="1"
                     android:text="기타" />
