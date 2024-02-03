@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvRankingTitle"
         android:padding="16dp"
-        android:text="#월의 랭킹 👑"
+        android:text="#월의 랭킹 "
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="18sp" />
