@@ -35,9 +35,9 @@ class ChallengeDetailActivity : AppCompatActivity() {
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
         //val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
-        val tvChallenge1 = findViewById<TextView>(R.id.tvChallenge1)
-        val tvChallenge2 = findViewById<TextView>(R.id.tvChallenge2)
-        val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
+        //val tvChallenge1 = findViewById<TextView>(R.id.tvChallenge1)
+        //val tvChallenge2 = findViewById<TextView>(R.id.tvChallenge2)
+        //val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
@@ -59,9 +59,9 @@ class ChallengeDetailActivity : AppCompatActivity() {
                 "\n" +
                 "        // 도장판 초기화\n" +
                 "        initializeStampGrid(gridLayoutStamps, stampsCollected)ge3")
-        tvChallenge1.text = challenge1
-        tvChallenge2.text = challenge2
-        tvChallenge3.text = challenge3
+        //tvChallenge1.text = challenge1
+        //tvChallenge2.text = challenge2
+        //ㅜtvChallenge3.text = challenge3
 
     }
     private fun changeImageButtonImage(imageButton: ImageButton) {
