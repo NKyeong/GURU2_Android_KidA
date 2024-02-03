@@ -143,4 +143,11 @@ class ChallengeDBHelper(context: Context) :
         db.close()
         return stampsCollected
     }
+
+    // 챌린지 삭제 메서드 추가
+    fun deleteChallenge(challengeName: String) {
+        val db = this.writableDatabase
+        db.delete("User_Challenge_Info", "챌린지이름=?", arrayOf(challengeName))
+        db.close()
+    }
 }

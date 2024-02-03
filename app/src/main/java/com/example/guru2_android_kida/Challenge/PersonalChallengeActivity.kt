@@ -30,6 +30,14 @@ class PersonalChallengeActivity :AppCompatActivity() {
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
+            val currentChallengeName = DataManager.currentChallengeName
+            // 값이 null이 아닌 경우에만 챌린지 삭제 메서드 호출
+            currentChallengeName?.let { name ->
+                // ChallengeDBHelper 인스턴스 생성
+                val dbHelper = ChallengeDBHelper(this)
+                // 챌린지 삭제 메서드 호출
+                dbHelper.deleteChallenge(currentChallengeName)
+            }
             finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
         }
 
@@ -52,7 +60,7 @@ class PersonalChallengeActivity :AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            dbHelper.saveChallengeData(challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
+            //dbHelper.saveChallengeData(challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
             navigateToHomeScreen()
         }
     }

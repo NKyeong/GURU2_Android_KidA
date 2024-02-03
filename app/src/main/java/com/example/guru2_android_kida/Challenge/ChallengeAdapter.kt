@@ -40,6 +40,7 @@ class ChallengeAdapter(private val clickListener: ChallengeItemClickListener) : 
         holder.itemView.findViewById<Button>(R.id.btn_start_challenge).setOnClickListener {
             // 클릭 이벤트 발생 시 ChallengeItemClickListener의 메서드 호출
             clickListener.onChallengeStartClicked(challenge.challengeName, position, challengeList)
+            DataManager.currentChallengeName = challenge.challengeName
             val context = holder.itemView.context
             val intent = Intent(context, PersonalChallengeActivity::class.java)
             context.startActivity(intent)
