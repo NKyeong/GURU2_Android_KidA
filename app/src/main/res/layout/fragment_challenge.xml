@@ -156,20 +156,10 @@
                 android:text="오늘의 인기 챌린지" />
 
             <!-- ViewPager for Image Slider -->
-            <androidx.viewpager2.widget.ViewPager2
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popularViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
-
-            <!-- Indicator (Dots) -->
-            <LinearLayout
-                android:id="@+id/popularIndicatorLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -189,20 +179,10 @@
                 android:text="내 챌린지 관리" />
 
             <!-- ViewPager for Image Slider -->
-            <androidx.viewpager2.widget.ViewPager2
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/myChallengeViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
-
-            <!-- Indicator (Dots) -->
-            <LinearLayout
-                android:id="@+id/recommendationIndicatorLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

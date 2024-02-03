@@ -11,9 +11,11 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.ImageSliderAdapter
-import com.example.guru2_android_kida.Indicator
 import com.example.guru2_android_kida.R
+
 
 class ChallengeFragment : Fragment() {
 
@@ -47,49 +49,26 @@ class ChallengeFragment : Fragment() {
 
         //
 
-        //populatViewPage 이미지 슬라이드
-        val popularViewPager: ViewPager2 = view.findViewById(R.id.popularViewPager)
-        val adapter1 = ImageSliderAdapter()
-        popularViewPager.adapter = adapter1
+        val popularRecyclerView: RecyclerView = view.findViewById(R.id.popularViewPager)
+        val myChallengeRecyclerView: RecyclerView = view.findViewById(R.id.myChallengeViewPager)
 
-        //myChallengeViewPager 이미지 슬라이드
-        val myChallengeViewPager: ViewPager2 = view.findViewById(R.id.myChallengeViewPager)
-        val adapter2 = ImageSliderAdapter()
-        myChallengeViewPager.adapter = adapter2
+        // Check if LayoutManager is already attached before setting it
+        if (popularRecyclerView.layoutManager == null) {
+            val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            popularRecyclerView.layoutManager = layoutManager
+        }
 
-        // Set up ViewPager with the ImageSliderAdapter
-        val imageSliderAdapter = ImageSliderAdapter()
-        popularViewPager.adapter = imageSliderAdapter
-        myChallengeViewPager.adapter = imageSliderAdapter
+        if (myChallengeRecyclerView.layoutManager == null) {
+            val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            myChallengeRecyclerView.layoutManager = layoutManager
+        }
 
-        // Find indicatorLayout
-        val popularIndicatorLayout: LinearLayout = view.findViewById(R.id.popularIndicatorLayout)
-        val recommendationIndicatorLayout: LinearLayout =
-            view.findViewById(R.id.recommendationIndicatorLayout)
+        val popularAdapter = ImageSliderAdapter()
+        val myChallengeAdapter = ImageSliderAdapter()
 
-        // Set up Indicator
-        val indicator1 = Indicator(5, requireContext()) // Assuming there are 5 images
-        popularIndicatorLayout.addView(indicator1.createDotPanel())
+        popularRecyclerView.adapter = popularAdapter
+        myChallengeRecyclerView.adapter = myChallengeAdapter
 
-        val indicator2 = Indicator(5, requireContext()) // Assuming there are 5 images
-        recommendationIndicatorLayout.addView(indicator2.createDotPanel())
-
-        // ViewPager Page Change Listener for popularIndicator
-        popularViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                indicator1.selectDot(position)
-            }
-        })
-
-        // ViewPager Page Change Listener for recommendationIndicator
-        myChallengeViewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                indicator2.selectDot(position)
-            }
-        })
     }
 
     // 카테고리 별 챌린지 페이지로 이동하는 함수
