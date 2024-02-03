@@ -18,25 +18,27 @@
 
             <TextView
                 android:id="@+id/home"
-                android:layout_width="82dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="41dp"
-                android:layout_marginTop="42dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/abeezee_italic"
                 android:gravity="top"
                 android:lineHeight="24sp"
                 android:lineSpacingExtra="-11sp"
                 android:text="Home"
                 android:textColor="@color/black"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="400dp"
                 android:layout_height="344dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="15dp"
                 android:elevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
@@ -48,13 +50,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="20dp"
                 android:gravity="top"
                 android:lineSpacingExtra="3sp"
                 android:text="Today's Challenge"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:translationY="-1.36sp" />
+                android:translationY="-1.36sp"
+                android:fontFamily="@font/abeezee_italic"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/challengeRecyclerView"
@@ -80,6 +83,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="35dp"
+                    android:fontFamily="@font/abeezee_italic"
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
                     android:text="To Do List"

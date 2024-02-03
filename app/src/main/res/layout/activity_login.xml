@@ -24,7 +24,8 @@
         android:textSize="24sp"
         android:translationY="-1.82sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/abeezee_italic"/>
 
     <Button
         android:id="@+id/btnRegister"

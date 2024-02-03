@@ -11,11 +11,13 @@
         android:id="@+id/tvRankingTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:fontFamily="@font/abeezee_italic"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
         android:text="Ranking"
         android:textAlignment="viewStart"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <!--월 표시 -->
@@ -25,11 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvRankingTitle"
         android:padding="16dp"
-        android:text="#월의 랭킹"
+        android:text="#월의 랭킹 👑"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <!-- 랭킹을 위한 ListView -->
     <androidx.recyclerview.widget.RecyclerView
