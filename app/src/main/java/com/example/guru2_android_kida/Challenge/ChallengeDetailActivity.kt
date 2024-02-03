@@ -1,8 +1,10 @@
 package com.example.guru2_android_kida.Challenge
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,19 @@ class ChallengeDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_detail)
+
+        val gridLayout: GridLayout = findViewById(R.id.stampBoard)
+
+        for (i in 0 until gridLayout.childCount) {
+            val child: View = gridLayout.getChildAt(i)
+
+            if (child is ImageButton) {
+                child.setOnClickListener {
+                    // 클릭된 ImageButton의 이미지를 변경
+                    changeImageButtonImage(child)
+                }
+            }
+        }
 
         //  "challengeName" 키로 전달된 데이터 (챌린지제목을 가져옵니다. 데이터 저장 시 사용해주세요.)
         val challengeName = intent.getStringExtra("challengeName")
@@ -48,6 +63,10 @@ class ChallengeDetailActivity : AppCompatActivity() {
         tvChallenge2.text = challenge2
         tvChallenge3.text = challenge3
 
+    }
+    private fun changeImageButtonImage(imageButton: ImageButton) {
+        // 클릭된 ImageButton의 이미지를 변경
+        imageButton.setImageResource(R.drawable.dot_selected)
     }
 
     // 현재 진행 중인 도장판 초기화 함수

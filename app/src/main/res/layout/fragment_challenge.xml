@@ -156,7 +156,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="오늘의 인기 챌린지" />
+                android:text="오늘의 인기 챌린지"
+                android:textSize="16sp"/>
 
             <!-- ViewPager for Image Slider -->
             <androidx.recyclerview.widget.RecyclerView
@@ -178,7 +179,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-
+                android:textSize="16sp"
                 android:text="내 챌린지 관리" />
 
             <!-- ViewPager for Image Slider -->
