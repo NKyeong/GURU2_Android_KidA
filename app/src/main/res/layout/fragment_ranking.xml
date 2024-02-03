@@ -20,6 +20,7 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+
     <!--월 표시 -->
     <TextView
         android:id="@+id/tvCurrentMonth"
@@ -37,7 +38,17 @@
         android:id="@+id/recyclerViewRanking"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-    android:layout_below="@id/tvCurrentMonth"
-    android:padding="8dp" />
+        android:layout_below="@id/tvCurrentMonth"
+        android:padding="8dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="281dp"
+        android:src="@drawable/ranking_crown" />
 
 </RelativeLayout>
