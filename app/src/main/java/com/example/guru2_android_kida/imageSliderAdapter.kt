@@ -18,11 +18,11 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
         "영어 문장을 읽고 해석하는 것은 자신이 있지만 말하는 것에 자신이 없는 당신! 영어 뉴스를 들으며 자연스럽게 회화에 익숙해져보세요. 목표를 설정하고 꾸준하게 이루어가며 KidA와 함께 도장판을 채워가요!")
 
     private val images = intArrayOf(
-        R.drawable.image_exercise_morning_walk,
-        R.drawable.image_extra_transcription,
-        R.drawable.image_hobby_baking,
-        R.drawable.image_life_sleep,
-        R.drawable.image_study_english_words
+        R.drawable.image_life_miracle_morning,
+        R.drawable.image_food_home_meal,
+        R.drawable.image_exercise_walk,
+        R.drawable.image_hobby_painting,
+        R.drawable.image_study_english_news
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSliderViewHolder {
