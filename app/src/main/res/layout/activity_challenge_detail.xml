@@ -39,28 +39,31 @@
         android:layout_marginBottom="16dp">
 
         <!-- 사용자가 설정한 도전과제 1 -->
-        <TextView
-            android:id="@+id/tvChallenge1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="도전과제 1"
-            android:textAppearance="?attr/textAppearanceBody1" />
 
         <!-- 사용자가 설정한 도전과제 2 -->
-        <TextView
-            android:id="@+id/tvChallenge2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="도전과제 2"
-            android:textAppearance="?attr/textAppearanceBody1" />
 
         <!-- 사용자가 설정한 도전과제 3 -->
+
         <TextView
-            android:id="@+id/tvChallenge3"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="도전과제 3"
-            android:textAppearance="?attr/textAppearanceBody1" />
+            android:text="1. 자기 전에 물 한 컵 마시기"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. 자기 30분 전부터 핸드폰 화면 보지 않기"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. 6시간 이상 수면하기"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <!-- 현재 진행 중인 도장판 표시 -->
