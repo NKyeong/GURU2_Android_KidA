@@ -25,9 +25,9 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page), ChallengeNameAdapter
     private lateinit var ChallengeNamedbHelper: ChallengeDBHelper
     private lateinit var userName: TextView
     private lateinit var challengeView: RecyclerView
-    private lateinit var challengeNameAdapter: ChallengeNameAdapter // ChallengeNameAdapter 추가
+    private lateinit var challengeNameAdapter: ChallengeNameAdapter
 
-    private val challengeNameLIst = mutableListOf<String>() // 챌린지 정보 리스트 추가
+    private val challengeNameLIst = mutableListOf<String>()
 
 
     override fun onCreateView(

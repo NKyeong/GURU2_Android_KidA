@@ -49,8 +49,6 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
             val dbHelper = ChallengeDBHelper(this)
             // 선택된 챌린지들을 삭제
             dbHelper.deleteChallengesByUsernameAndNames(checkedChallengeNames)
-            // 선택된 챌린지 이름 목록 초기화
-            //checkedChallengeNames.clear()
             // MyPageFragment로 이동하는 부분
             val intent = Intent(this, MyPageFragment::class.java)
             startActivity(intent)
@@ -92,6 +90,7 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
     override fun onChallengeClick(challengeName: String) {
         // 클릭 이벤트를 처리합니다.
     }
+
     // 체크된 챌린지 이름 목록을 가져오는 함수
     private fun getCheckedChallengeNames(): List<String> {
         val checkedChallengeNames = mutableListOf<String>()
@@ -107,5 +106,4 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
         }
         return checkedChallengeNames
     }
-
 }
