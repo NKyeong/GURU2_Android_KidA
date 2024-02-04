@@ -16,17 +16,17 @@
             android:orientation="vertical"
             android:padding="3dp">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="내 정보 설정"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Profile"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/abeezee_italic" />
 
         <ImageView
             android:id="@+id/imageView4"

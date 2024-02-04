@@ -220,6 +220,7 @@
                     android:drawablePadding="5dp"/>
 
                 <Button
+                    android:id="@+id/my_page_notice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="공지사항"
@@ -233,6 +234,7 @@
                     android:drawablePadding="5dp"/>
 
                 <Button
+                    android:id="@+id/my_page_QnA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="문의사항"

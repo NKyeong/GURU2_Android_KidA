@@ -3,23 +3,15 @@ package com.example.guru2_android_kida.MyPage
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
-import com.example.guru2_android_kida.HomeDetail.ChallengeNameAdapter
 import com.example.guru2_android_kida.HomeDetail.MyPageAdapter
 import com.example.guru2_android_kida.R
 import com.example.guru2_android_kida.databinding.ActivityMyPageEditBinding
-import com.example.guru2_android_kida.databinding.FragmentMyPageBinding
 
 class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickListener {
 
