@@ -17,6 +17,10 @@
         <activity
             android:name=".MyPage.MyPageInfoActivity"
             android:exported="false" />
+        <activity android:name=".MyPage.MyPageQnaActivity"
+            android:exported="false"/>
+        <activity android:name=".MyPage.MyPageNoticeActivity"
+            android:exported="false"/>
         <activity
             android:name=".Login.RegisterActivity"
             android:exported="false" />
