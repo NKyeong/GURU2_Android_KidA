@@ -12,6 +12,9 @@
         android:theme="@style/Theme.GURU2_Android_KidA"
         tools:targetApi="31">
         <activity
+            android:name=".MyPage.MyPageAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPage.MyPageAlarmActivity"
             android:exported="false" />
         <activity

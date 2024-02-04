@@ -75,6 +75,12 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page), ChallengeNameAdapter
             startActivity(intent)
         }
 
+        // 계정 보안 화면으로 이동
+        binding.myPageAccount.setOnClickListener {
+            val intent = Intent(requireContext(), MyPageAccountActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 
