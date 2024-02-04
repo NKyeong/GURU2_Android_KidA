@@ -63,6 +63,18 @@ class MyPageFragment : Fragment(R.layout.fragment_my_page), ChallengeNameAdapter
             startActivity(intent)
         }
 
+        // 내 정보 설정 화면으로 이동
+        binding.myPageInfo.setOnClickListener {
+            val intent = Intent(requireContext(), MyPageInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 알림 설정 화면으로 이동
+        binding.myPageAlarm.setOnClickListener {
+            val intent = Intent(requireContext(), MyPageAlarmActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 

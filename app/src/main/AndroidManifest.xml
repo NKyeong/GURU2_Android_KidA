@@ -11,34 +11,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2_Android_KidA"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MyPage.MyPageAlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPage.MyPageInfoActivity"
+            android:exported="false" />
         <activity
             android:name=".Login.RegisterActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".Challenge.ChallengeCategoryActivity"
             android:exported="false" />
-
         <activity
             android:name=".Challenge.PersonalChallengeActivity"
             android:exported="false" />
         <activity
             android:name=".Challenge.ChallengeDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".MyPage.MyPageEditActivity"
-            android:label="MyPageEditActivity"
-            android:exported="false" />
-
-        <activity android:name="com.example.guru2_android_kida.MyPage.MyPageFragment"
+            android:exported="false"
+            android:label="MyPageEditActivity" />
+        <activity
+            android:name=".MyPage.MyPageFragment"
             tools:ignore="Instantiatable" />
-
-
         <activity
             android:name=".IntroActivity"
             android:exported="true">
@@ -48,8 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.LoginActivity"></activity>
-
+        <activity android:name=".Login.LoginActivity" />
     </application>
 
 </manifest>

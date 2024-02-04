@@ -192,6 +192,7 @@
                     android:fontFamily="@font/abeezee_italic"/>
 
                 <Button
+                    android:id="@+id/my_page_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
@@ -205,6 +206,7 @@
                     android:elevation="1dp" />
 
                 <Button
+                    android:id="@+id/my_page_alarm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="알림 설정"
