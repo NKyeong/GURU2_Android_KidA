@@ -9,18 +9,16 @@
     tools:layout_editor_absoluteX="-5dp"
     tools:layout_editor_absoluteY="-35dp">
 
-    <!-- 로고 만들어서 넣어주세요 !-->
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="157dp"
         android:layout_height="154dp"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.847"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.847" />
 
     <TextView
         android:id="@+id/textView3"
