@@ -52,7 +52,6 @@ class ChallengeFragment : Fragment() {
         val popularRecyclerView: RecyclerView = view.findViewById(R.id.popularViewPager)
         val myChallengeRecyclerView: RecyclerView = view.findViewById(R.id.myChallengeViewPager)
 
-        // Check if LayoutManager is already attached before setting it
         if (popularRecyclerView.layoutManager == null) {
             val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             popularRecyclerView.layoutManager = layoutManager
