@@ -29,19 +29,14 @@ class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListene
 
         dbHelper = ChallengeDBHelper(this)
 
-        // RecyclerView 초기화
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         challengeAdapter = ChallengeAdapter(this)
         recyclerView.adapter = challengeAdapter
 
-        // Intent로부터 카테고리 정보 가져오기
         val category = intent.getStringExtra("category")
-
-        // 카테고리별 챌린지 데이터 가져오기
         val challengeList = getChallengesByCategory(category.orEmpty())
 
-        // Adapter에 데이터 설정
         challengeAdapter.submitList(challengeList)
     }
 
@@ -49,8 +44,6 @@ class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListene
     private fun getChallengesByCategory(category: String): List<ChallengeList> {
         val challengeList = mutableListOf<ChallengeList>()
         val db = dbHelper.readableDatabase
-
-        // 데이터베이스에서 해당 카테고리의 챌린지를 쿼리하여 가져오는 작업을 수행합니다.
         val cursor = db.rawQuery("SELECT * FROM Challenge_List_DB WHERE 카테고리 = ?", arrayOf(category))
 
         while (cursor.moveToNext()) {
@@ -67,14 +60,12 @@ class ChallengeCategoryActivity : AppCompatActivity(), ChallengeItemClickListene
         return challengeList
     }
 
-    // ChallengeItemClickListener의 메서드 구현
     override fun onChallengeStartClicked(challengeName: String, position: Int,  challengeList: List<ChallengeList> ) {
-        // 현재 로그인한 사용자의 이름을 가져오기
         val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val currentUsername = sharedPreferences.getString("current_username", "") ?: ""
-        //Log.d("SharedPreferences", "Current Username: $currentUsername")
-        // User_Challenge_Info 테이블에 챌린지 이름 추가 또는 업데이트
         val challengeDBHelper = ChallengeDBHelper(this)
+
         challengeDBHelper.updateUserChallengeInfo(currentUsername, challengeName)
     }
+
 }

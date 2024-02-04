@@ -24,7 +24,6 @@ class ChallengeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Fragment에서 사용할 레이아웃을 인플레이트하여 반환합니다.
         return inflater.inflate(R.layout.fragment_challenge, container, false)
     }
 

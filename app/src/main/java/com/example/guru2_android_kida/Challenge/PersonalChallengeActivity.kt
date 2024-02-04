@@ -20,25 +20,20 @@ class PersonalChallengeActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_challenge)
 
-        // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
         val btnJoinChallenge = findViewById<Button>(R.id.btnJoinChallenge)
         val etChallenge1 = findViewById<EditText>(R.id.etChallenge1)
         val etChallenge2 = findViewById<EditText>(R.id.etChallenge2)
         val etChallenge3 = findViewById<EditText>(R.id.etChallenge3)
-        //val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
             val currentChallengeName = DataManager.currentChallengeName
-            // 값이 null이 아닌 경우에만 챌린지 삭제 메서드 호출
             currentChallengeName?.let { name ->
-                // ChallengeDBHelper 인스턴스 생성
                 val dbHelper = ChallengeDBHelper(this)
-                // 챌린지 삭제 메서드 호출
                 dbHelper.deleteChallenge(currentChallengeName)
             }
-            finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
+            finish()
         }
 
         // 도전과제 입력 필드에 대한 리스너 설정
