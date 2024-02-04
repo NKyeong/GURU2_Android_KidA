@@ -16,7 +16,7 @@ class UserRankingAdapter(private val rankingList: List<UserRanking>) : RecyclerV
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val userRanking = rankingList[position]
-        holder.userName.text = "${position + 1}위 ${userRanking.userName}" // 순위 형식 수정
+        holder.userName.text = "${position + 1}위 ${userRanking.userName}"
         holder.stampsCount.text = "${userRanking.stampsCount} stamps"
     }
 

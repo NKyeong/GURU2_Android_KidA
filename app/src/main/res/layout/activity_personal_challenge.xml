@@ -70,7 +70,7 @@
                     android:hint="도전과제 3" />
             </LinearLayout>
 
-            <!-- "열심히 채워볼까요?" 텍스트와 빈 도장판 -->
+            <!-- "매일 열심히 채워볼까요?" 텍스트와 빈 도장판 -->
             <TextView
                 android:id="@+id/tvStampMessage"
                 android:layout_width="wrap_content"
@@ -92,7 +92,6 @@
                 android:orientation="horizontal"
                 android:rowCount="5">
 
-                <!-- 여기에 도장판의 각 칸에 해당하는 뷰들을 추가합니다. -->
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="0dp"

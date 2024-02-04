@@ -23,33 +23,25 @@ class ChallengeDetailActivity : AppCompatActivity() {
 
             if (child is ImageButton) {
                 child.setOnClickListener {
-                    // 클릭된 ImageButton의 이미지를 변경
+
                     changeImageButtonImage(child)
                 }
             }
         }
 
-        //  "challengeName" 키로 전달된 데이터 (챌린지제목을 가져옵니다. 데이터 저장 시 사용해주세요.)
         val challengeName = intent.getStringExtra("challengeName")
 
         // 뷰 바인딩
         val btnBack = findViewById<Button>(R.id.btnBack)
-        //val gridLayoutStamps = findViewById<GridLayout>(R.id.gridLayoutStamps)
-        //val tvChallenge1 = findViewById<TextView>(R.id.tvChallenge1)
-        //val tvChallenge2 = findViewById<TextView>(R.id.tvChallenge2)
-        //val tvChallenge3 = findViewById<TextView>(R.id.tvChallenge3)
 
         // '뒤로 가기' 버튼 이벤트 처리
         btnBack.setOnClickListener {
-            finish() // 현재 활동을 종료하고 이전 화면으로 돌아감
+            finish()
         }
 
         // 도장 개수 조회
         val dbHelper = ChallengeDBHelper(this)
-        val stampsCollected = dbHelper.getStampsCollected("user1") // "user1"은 예시 사용자 이름입니다.
-
-        // 도장판 초기화
-        //initializeStampGrid(gridLayoutStamps, stampsCollected)
+        val stampsCollected = dbHelper.getStampsCollected("user1")
 
         // 저장된 도전과제 표시 (Intent로 전달된 데이터 사용)
         val challenge1 = intent.getStringExtra("challenge1")
@@ -59,9 +51,6 @@ class ChallengeDetailActivity : AppCompatActivity() {
                 "\n" +
                 "        // 도장판 초기화\n" +
                 "        initializeStampGrid(gridLayoutStamps, stampsCollected)ge3")
-        //tvChallenge1.text = challenge1
-        //tvChallenge2.text = challenge2
-        //ㅜtvChallenge3.text = challenge3
 
     }
     private fun changeImageButtonImage(imageButton: ImageButton) {
@@ -77,10 +66,10 @@ class ChallengeDetailActivity : AppCompatActivity() {
             val stamp = ImageView(this)
             if (i < stampsCollected) {
                 // 채워진 도장 이미지 설정
-                stamp.setImageResource(R.drawable.indicator_dot_selected) // 채워진 도장 이미지 리소스
+                stamp.setImageResource(R.drawable.indicator_dot_selected)
             } else {
                 // 빈 도장 이미지 설정
-                stamp.setImageResource(R.drawable.indicator_dot_unselected) // 빈 도장 이미지 리소스
+                stamp.setImageResource(R.drawable.indicator_dot_unselected)
             }
             gridLayout.addView(stamp)
 

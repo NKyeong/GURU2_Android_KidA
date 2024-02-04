@@ -46,8 +46,6 @@ class ChallengeFragment : Fragment() {
         hobbyBtn.setOnClickListener { navigateToCategory("취미생활") }
         extraBtn.setOnClickListener { navigateToCategory("기타") }
 
-        //
-
         val popularRecyclerView: RecyclerView = view.findViewById(R.id.popularViewPager)
         val myChallengeRecyclerView: RecyclerView = view.findViewById(R.id.myChallengeViewPager)
 

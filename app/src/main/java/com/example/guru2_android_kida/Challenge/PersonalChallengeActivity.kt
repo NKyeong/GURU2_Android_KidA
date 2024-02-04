@@ -55,7 +55,7 @@ class PersonalChallengeActivity :AppCompatActivity() {
             val challenge3 = etChallenge3.text.toString()
 
             val dbHelper = ChallengeDBHelper(this)
-            //dbHelper.saveChallengeData(challenge1, challenge2, challenge3, 0) // 초기 도장 개수 0
+
             navigateToHomeScreen()
         }
     }
@@ -112,7 +112,7 @@ class PersonalChallengeActivity :AppCompatActivity() {
         val dbHelper = ChallengeDBHelper(this)
 
         // 도전과제 정보 및 도장 개수를 ChallengeDBHelper를 통해 저장
-        dbHelper.saveChallengeData(challenge1, challenge2, challenge3, stampsCollected) // 'user1'은 예시입니다.
+        dbHelper.saveChallengeData(challenge1, challenge2, challenge3, stampsCollected)
 
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {

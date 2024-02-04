@@ -38,12 +38,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
 
-        <!-- 사용자가 설정한 도전과제 1 -->
-
-        <!-- 사용자가 설정한 도전과제 2 -->
-
-        <!-- 사용자가 설정한 도전과제 3 -->
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
@@ -67,7 +61,6 @@
     </LinearLayout>
 
     <!-- 현재 진행 중인 도장판 표시 -->
-
 
     <TextView
         android:id="@+id/tvStampMessage"
@@ -96,7 +89,6 @@
         android:orientation="horizontal"
         android:rowCount="5">
 
-        <!-- 여기에 도장판의 각 칸에 해당하는 뷰들을 추가합니다. -->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -366,22 +358,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/dot_unselected"
             android:scaleType="fitXY" />
-
-
-        <!-- 나머지 도장들도 유사하게 추가합니다. -->
 
     </GridLayout>
-    <!--<ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="395dp"
-        android:layout_height="316dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="43dp"
-        app:srcCompat="@mipmap/stamp_file_foreground" />-->
+
 
 </RelativeLayout>
