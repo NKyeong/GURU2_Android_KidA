@@ -51,6 +51,14 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
         showChallengeList()
 
         binding.btnRemove.setOnClickListener {
+            // 체크된 챌린지 이름 목록 가져오기
+            val checkedChallengeNames = getCheckedChallengeNames()
+            // ChallengeDBHelper 인스턴스 생성
+            val dbHelper = ChallengeDBHelper(this)
+            // 선택된 챌린지들을 삭제
+            dbHelper.deleteChallengesByUsernameAndNames(checkedChallengeNames)
+            // 선택된 챌린지 이름 목록 초기화
+            //checkedChallengeNames.clear()
             // MyPageFragment로 이동하는 부분
             val intent = Intent(this, MyPageFragment::class.java)
             startActivity(intent)
@@ -70,7 +78,7 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
         setChallengeList(userChallenges)
 
         // 텍스트 뷰에 챌린지이름을 표시
-        val challengeNameTextView = findViewById<TextView>(R.id.challengeEditTextView)
+        val challengeNameTextView = findViewById<TextView>(R.id.challengeNameCheckBox)
         if (challengeNameLIst.isEmpty()) {
             challengeNameTextView?.text = "참여 중인 챌린지가 없습니다."
         } else {
@@ -92,4 +100,20 @@ class MyPageEditActivity: AppCompatActivity(), MyPageAdapter.OnChallengeClickLis
     override fun onChallengeClick(challengeName: String) {
         // 클릭 이벤트를 처리합니다.
     }
+    // 체크된 챌린지 이름 목록을 가져오는 함수
+    private fun getCheckedChallengeNames(): List<String> {
+        val checkedChallengeNames = mutableListOf<String>()
+        val challengeNameList = MyPageAdapter.getChallengeNameList()
+
+        for (position in 0 until MyPageAdapter.itemCount) {
+            val viewHolder = binding.challengeEditView.findViewHolderForAdapterPosition(position)
+            if (viewHolder is MyPageAdapter.ChallengeViewHolder && viewHolder.checkBox.isChecked) {
+                // 어댑터에서 직접 챌린지 이름을 가져오는 대신 메서드를 사용
+                val challengeName = challengeNameList[position]
+                checkedChallengeNames.add(challengeName)
+            }
+        }
+        return checkedChallengeNames
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.guru2_android_kida.HomeDetail
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_android_kida.Challenge.ChallengeDBHelper
@@ -18,9 +19,12 @@ class MyPageAdapter(private var challengeNameLIst: MutableList<String>, // 챌�
         fun onChallengeClick(challengeName: String)
     }
 
+    // 체크된 아이템의 챌린지 이름을 저장할 리스트
+    private val checkedChallengeNames = mutableListOf<String>()
+
     // ChallengeViewHolder 클래스: RecyclerView의 각 아이템을 위한 ViewHolder 클래스
     class ChallengeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val challengeName: TextView = itemView.findViewById(R.id.challengeEditTextView)
+        val checkBox: CheckBox = itemView.findViewById(R.id.challengeNameCheckBox)
     }
 
     // onCreateViewHolder 함수: ViewHolder 객체를 생성하여 반환하는 함수
@@ -32,11 +36,22 @@ class MyPageAdapter(private var challengeNameLIst: MutableList<String>, // 챌�
 
     // onBindViewHolder 함수: ViewHolder에 데이터를 바인딩하는 함수
     override fun onBindViewHolder(holder: ChallengeViewHolder, position: Int) {
-        holder.challengeName.text = challengeNameLIst[position]
+        //holder.challengeName.text = challengeNameLIst[position]
 
-        holder.itemView.findViewById<TextView>(R.id.challengeEditTextView).setOnClickListener {
-            val clickedChallengeName = challengeNameLIst[position]
-            listener.onChallengeClick(clickedChallengeName)
+        val challenge = challengeNameLIst[position]
+        // 체크박스의 텍스트로 챌린지 이름 설정
+        holder.checkBox.text = challenge
+        holder.checkBox.isChecked = checkedChallengeNames.contains(challenge) // 체크 상태 설정
+        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // 체크된 경우 리스트에 챌린지 이름 추가
+                checkedChallengeNames.add(challenge)
+            } else {
+                // 체크 해제된 경우 리스트에서 챌린지 이름 제거
+                checkedChallengeNames.remove(challenge)
+            }
+            //val clickedChallengeName = challengeNameLIst[position]
+            //listener.onChallengeClick(clickedChallengeName)
         }
     }
 
@@ -60,5 +75,9 @@ class MyPageAdapter(private var challengeNameLIst: MutableList<String>, // 챌�
         challengeNameLIst.addAll(newChallengeList)
         // RecyclerView 갱신
         notifyDataSetChanged()
+    }
+    // 챌린지 목록을 반환하는 메서드
+    fun getChallengeNameList(): List<String> {
+        return challengeNameLIst
     }
 }

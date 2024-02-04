@@ -150,4 +150,17 @@ class ChallengeDBHelper(context: Context) :
         db.delete("User_Challenge_Info", "챌린지이름=?", arrayOf(challengeName))
         db.close()
     }
+
+    // 체크된 챌린지 이름을 삭제하는 메서드 추가
+    fun deleteChallengesByUsernameAndNames(challengeNames: List<String>) {
+        val db = this.writableDatabase
+        challengeNames.forEach { challengeName ->
+            db.delete(
+                "User_Challenge_Info",
+                "챌린지이름 = ?",
+                arrayOf(challengeName)
+            )
+        }
+        db.close()
+    }
 }
