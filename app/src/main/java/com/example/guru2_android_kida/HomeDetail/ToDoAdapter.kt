@@ -75,15 +75,4 @@ class ToDoAdapter(private val dbHelper: TodoDBHelper, private val selectedDate: 
         notifyDataSetChanged()
     }
 
-    // 현재 todoList 반환하는 메서드 추가
-    fun getToDoList(): List<ToDoItem> {
-        return todoList.toList()
-    }
-
-    // 전체 목록을 갱신하는 메서드 추가
-    fun setToDoList(newList: List<ToDoItem>) {
-        todoList.clear()
-        todoList.addAll(newList)
-        notifyDataSetChanged()
-    }
 }

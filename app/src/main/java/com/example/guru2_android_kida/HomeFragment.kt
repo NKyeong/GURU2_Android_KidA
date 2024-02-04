@@ -133,12 +133,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), ChallengeNameAdapter.OnCh
         }
     }
 
-    // 현재 로그인한 사용자의 챌린지 목록을 가져오는 가상의 메서드
-    /*private fun getCurrentChallengename(): String {
-
-        return currentUsername
-    }*/
-
     // 할 일 아이템을 리스트에 추가하는 메서드
     private fun addTodoItem() {
         // 새로운 할 일 아이템 생성

@@ -58,11 +58,5 @@ class DBHelper(private val context: Context) :
         val editor = sharedPreferences.edit()
         editor.putString("current_username", enteredId)
         editor.apply()
-
-        // 해당 username이 User_Challenge_Info 테이블에 이미 있는지 확인
-        /*if (!challengeDBHelper.isUsernameExists(username)) {
-            // username이 테이블에 없다면 추가
-            challengeDBHelper.addUsernameToUserChallengeInfo(username)
-        }*/
     }
 }

@@ -52,30 +52,5 @@ class HomeActivity: AppCompatActivity() {
             }
         }
 
-        /*val homeFragment = HomeFragment()
-        val challengeFragment = ChallengeFragment()
-        val rankingFragment = RankingFragment()
-        val myPageFragment = MyPageFragment()
-
-        // 초기화면을 홈 플래그먼트로 설정합니다.
-        setCurrentFragment(homeFragment)
-
-        bottom_navigation_view.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.fragment_home -> setCurrentFragment(homeFragment)
-                R.id.fragment_challenge -> setCurrentFragment(challengeFragment)
-                R.id.fragment_ranking -> setCurrentFragment(rankingFragment)
-                R.id.fragment_my_page -> setCurrentFragment(myPageFragment)
-            }
-            true
-        }*/
-
     }
-    // 플래그먼트가 replace 됩니다.
-    /*fun setCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.main_container, fragment)
-            commit()
-        }*/
-
 }
